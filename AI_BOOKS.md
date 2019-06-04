@@ -66,7 +66,9 @@
 <p>저에게 가장 인상깊은 에피소드라 하면… 아트플로우는 항상 모임이 합정이나 공덕에서 진행되었습니다. 이게 왕복이 3시간이라 저한테 굉장히 멀다고 느껴졌습니다. 스터디의 랩 활동은 4시간 남짓 안되는데 한번은 공덕에 지하철을 타고 가다가 ‘진짜 도저히 안되겠다!’라는 마음이 들어, 그날 바로 장소를 바꾸자는 건의를 하였습니다. 칠판에 각자 사는 곳을 적어 놓고 중간 지점을 정하는데 마침 다행히도 각자 사는 곳이 비슷해서 드디어 공덕, 합정을 탈출했습니다! 이런 건의를 한 제가 너무 뿌듯하고 자랑스럽고 대견스럽습니다. 우리 앞으로는 사당에서 만나요!</p>
 <p><img src="https://lh3.googleusercontent.com/mOf9s-aE5jf0XkAaapzsioKBE4eMQSeTGNXjDEagMzn5WmcNrfCYlNZB3xlqm3sjOLH6Qu1KBh9V=s50" alt="" title="조원양"><strong>조원양</strong> :</p>
 <p>제일 생각이 많이 나는 것은 처음에 결성될 때입니다. 다들 뭘 해야 할지 몰라서 남아있던 연구원들이었고 대부분 파이썬을 설치조차 해본 적이 없던 연구원들이 많았습니다. 다들 모였는데 현업 개발자라는 이유만으로 임시 랩장을 맡았었네요. 지금은 규칙을 바꿔서 돌아가면서 랩장을 하기로 했습니다...</p>
-<h3>12. 다음의 랩 결과물에 대해 설명해주세요.(코드와 설명)</h3>
+<h3>9, 10, 11, 12. 다음의 랩 결과물에 대해 설명해주세요.(코드와 설명)</h3>
+<p>
+저희 아트플로우는 매주 책의 챕터들과 논문을 발표 하였는데요, 하나는&lt;케라스 창시자에게 배우는 딥러닝 – 프랑소와 숄레&gt;이고 다른 하나는 객체 탐지에 관련된 논문 리뷰입니다. 우선 책의 챕터들에 대한 리뷰를 먼저 살펴보겠습니다.</p>
 <p><img src="https://lh3.googleusercontent.com/1kd62PD4v3zemne3ezoOCYS47e8xULOOK_fyHTxQChCxb7hd2RcWbhDr_Bh2GxOKfVe-4ai4bT6Z=s50" alt="" title="김훈민"><strong>김훈민</strong> :</p>
 <p>RNN(Recurrent Neural Networks) 순환 신경망이란 결과값을 출력층 방향으로도 보내면서 다시 은닉층의 다음 Time step의 입력으로 보내는 특징을 갖습니다. 이러한 특징 때문에 이전의 연산이 이후 연산에 영향을 미치는 구조이고 자연어나 시계열 데이터와 같이 앞선 데이터가 현재 처리 결과에 영향을 주는 데이터처리에 효율적입니다.
 </p><p><img src="https://lh3.googleusercontent.com/fJbjCDGoiN0ovPkuPcHt-p81RH7GbSsWeTOy6wrfWi_5E0pFTtmfrN9_CDpwk437JfS3zfZHx-2j=s700" alt="" title="simple rnn"></p>
@@ -75,8 +77,6 @@
 <p>이러한 RNN의 문제점을 보완하기 위해 나온 LSTM(Long Short-Term Memory)은 여러 개의 게이트가 합쳐져 있는 구조며 선택적으로 정보들이 기억될 수 있도록 합니다. 먼저 이전 step에서 기억하는 cell state의 정보를 얼마나 잊을지 결정하고 새로운 정보를 얼마나 기억할지 결정하여 cell state에 추가합니다. 그리고 앞의 결과에 의해 정해진 cell state와 입력을 이용하여 어떤 값을 출력할지 결정하게 되는 구조입니다. 이렇게 결정되는 cell state는 장기적으로 이전 상태들을 기억 할 수 있게 도와주는 역할을 합니다.<br>
 <img src="https://lh3.googleusercontent.com/Mvaim9wL82Lb1Xqa7jwb13hTMqT2ONQr3aiMLdDMuq-qSdv3qdyLVNjEapEqGcCharsIs4lfiO9E=s700" alt="" title="lstm"></p>
 <center>LSTM(Long Short-Term Memory) 구조</center>
-<p><img src="https://lh3.googleusercontent.com/JCElC-S7Oh8ERUkNxE99JqpL7bP7_naNibkPHEaSnIMhUCbIwrlM_YToiWoDfb5YKPOykktOJ1-r=s50" alt="" title="박성은"><strong>박성은</strong> :</p>
-<p></p>
 <p><img src="https://lh3.googleusercontent.com/EEh6AtQW8AOdzrf_JzB1bXZ9gyHkUlXc__MyiTId_281HuMyQvmqZKGfW6_T1hPsBgYQ0rtv3e0k=s50" alt="" title="윤현근"><strong>윤현근</strong> :</p>
 <p>
 </p><center>Convolutional Neural Network</center>
@@ -120,8 +120,8 @@
 <ol start="4">
 <li>다양한 CNN 종류</li>
 </ol>
-<p>이 기본 구조를 활용하여 다양한 형태의 CNN이 개발되었고 이는 인공지능 분야의 발전을 이끌었습니다. 그 종류로는 LeNet-5, AlexNet, GoogLeNet, ResNet등이 있습니다.</p>
-<p><img src="https://lh3.googleusercontent.com/KuG8ITu2uYEPzkFN8heXISyqcljp073gjwTBxX7L_KsLPUv_LkGyP2mwmVubFu_NlfQT21Nh2j1P=s50" alt="" title="이준석"><strong>이준석</strong> :</p>
+<p>이 기본 구조를 활용하여 다양한 형태의 CNN이 개발되었고 이는 인공지능 분야의 발전을 이끌었습니다. 그 종류로는 LeNet-5, AlexNet, GoogLeNet, ResNet등이 있습니다.</p><br>
+<img src="https://lh3.googleusercontent.com/KuG8ITu2uYEPzkFN8heXISyqcljp073gjwTBxX7L_KsLPUv_LkGyP2mwmVubFu_NlfQT21Nh2j1P=s50" alt="" title="이준석"><strong>이준석</strong> :
 <p>RNN(Recurrent Neuron Network)과 LSTM(Long Short Term Memory)
 </p><p>RNN은 기존의 신경망과 다른 독특한 특징을 가지고 있습니다. 기존의 신경망은 input이 들어가고 여러 layer들을 거쳐 output이 나오는 형태였다면, RNN은 이전 output값이 input값과 함께 고려되어 들어갑니다. 이러한 이유로 보통 RNN이 ‘기억 능력’을 갖고 있다고 이야기합니다. 하지만 RNN의 문제는 gradient를 구하는데 어려움이 있다는 점입니다. Gradient 값을 구하기 위해 미분을 하다 보면 gradient가 0이 되거나 무한대로 발산을 하는 경우가 생기게 됩니다. 이러한 문제점을 해결하기 위해 고안된 방법이 LSTM입니다. LSTM의 가장 큰 특징은 필요에 따라 기억들을 지우고 더하는 알고리즘이 있다는 점입니다. 잊어야 할 정보들은 기억에서 잊고, 추가해야 할 정보들은 추가하면서 RNN 보다 더 효율적으로 활용이 가능합니다. </p><center><img src="https://lh3.googleusercontent.com/oTHCKlEGZ3WJCV30EJtv4iXgS6iZAQQ2hKFyxRaYrps4LN2kuZhB_DmbqnoPjUD2GtdRmBPUcDGR=s700" alt="" title="rnn"><br>
 GAN (Generative Adversarial System)</center><p></p>
