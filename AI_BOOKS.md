@@ -183,6 +183,17 @@ GAN (Generative Adversarial System)</center><p></p>
 </p><p><img src="https://lh3.googleusercontent.com/xC3j1O31UZEvVppuCm4j13oWek8-Od2KmVjxw6XnCJQHBPNKNULXgVmcVh4jyLnk63hManKSE-Df=s700" alt="" title="r-cnn"></p>
 <p>기존의 Faster R-CNN은 image에서 convolution layer를 통해 feature map을 뽑아내고 Region Proposal Network를 통해 bounding box를 뽑아냈습니다. 이 새로 개발된 Region Proposal Network를 통해 매우 빠른 속도로 bounding box를 뽑아낼 수 있었기 때문에 faster R=CNN은 fast R-CNN보다 월등히 빨랐습니다.</p>
 <p>Mask R-CNN은 이 Faster R-CNN에 FCN을 추가한 모델입니다. FCN이란 Fully conncected neural network의 약자이며 sementic segmentation을 위해 개발된 모델이었습니다. Faster R-CNN을 비롯한 기존의 image detection 모델은 bounding box를 통해 object를 detection하고 classification을 통해 그 object의 label이 무엇인지 파악하는 구조였습니다. 즉 detection과 classification이 모델을 이루는 두 뼈대였고 이 두 가지 소스를 통해 모델의 가중치가 학습되었습니다. 그런데 Faster R-CNN은 여기에 segmentation이라는 모델을 하나도 추가해 준 것입니다. 따라서 이 모델은 두 가지가 아닌 세 가지 소스로 가중치가 학습되었고 따라서 정확도가 기존의 모습보다 더 향상되지 않을 수 없었습니다. 그리고 이 방법은 사람이 사물을 인식하는 것과도 더 닮았습니다. 우리도 사물을 볼 때 그 사물의 위치를 잡을 뿐만 아니라 그 사물을 segementation하여 정확한 모양을 파악하니까요.</p>
+<p><img src="https://lh3.googleusercontent.com/RICyunnCjhRK8WYrUhJQkeFJ2uk0aNgr_wR7LiD_vUnFmSALHqJPHVfKdtNhgF6_xHeBd9heeZf6=s50" alt="" title="임한동"><strong>임한동</strong> :</p>
+<p>FPN은 multi scale object detection의 accuracy를 향상시키기 위해 나온 network 입니다. 우선FPN에 활용되는 Image Pyramid 라는 개념에 관해 먼저 이야기를 하겠습니다. Image pyramid은 고전적인 컴퓨터 비전 영역에서 많이 사용되었는데, 일정 pixel 간격으로 subsampling 해서 image layer, 즉 size가 다른 image 층들을 만드는 것입니다. 피라미드 상단은 low level feature는 없어지고 high level feature만 남아서 semantic value가 커지게 되지만 해상도는 줄어들게 됩니다. 이렇게 사이즈가 다른 이미지들을 활용해 FPN은 Multi Scale Object Detection에서 좋은 성능을 보입니다.
+</p><p>물론, 기본적인 CNN 구조에 위에서 설명한 Image Pyramid을 활용할 수도 있지만 시간이 너무 오래 걸리다는 문제점이 발생합니다. 이러한 문제점을 해결하기 위해 SSD가 나왔습니다. 하지만 SSD의 겨우, feature map마다 semantic gap이 크고 처음에 나오는 맨 밑단의 feature map들은 semantic value가 낮은, 즉, low level feature들로 인해 여전히 scale variant object를 잘 detect하지 못하는 문제점이 발생합니다. 그래서 이러한 문제를 해결한 것이 FPN입니다.</p>
+<p>FPN의 전체적인 개념은 상단의 semantic value는 크고 해상도는 낮은 feature map들과 하단의 semantic value는 낮지만 해상도가 높은 feature map들을 결합해서 모든 feature map level에서 rich한 semantic value를 가질 수 있도록 만들어보자는 것입니다.<br>
+<img src="https://lh3.googleusercontent.com/wf5X-8wIj0Wpn7H0il3U9ewEK9qzey79Blnn3xSt5Q2SYM4Bb4v7xetdKuKyPOoTVQnkFyk2LZNv=s700" alt="" title="fpn"></p>
+<p>FPN은 크게 Bottom-Up, Top-Dpwn, Later Connection 세 가지 구조로 이루어져 있고 Backbone network로 Resnet을 사용하고 있고 여기서 나오는 feature map들을 이용하고 있습니다.</p>
+<p>Top down구조는 semantic gap문제를 해결해주고 lateral connection은 location accuracy 문제를 해결해준다고 논문에서 설명하고 있습니다. 이렇게 생성된 feature map들을 Faster RCNN과 결합해 좋은 성능을 낼 수 있습니다.</p>
+<p>&lt;![if !supportEmptyParas]&gt; &lt;![endif]&gt;</p>
+<p>Tsung-Yi Lin1,2, Piotr Doll´ ar1, Ross Girshick1, Kaiming He1, Bharath Hariharan1, and Serge Belongie</p>
+<p>[Feature Pyramid Networks for Object Detection]</p>
+
 <h3>13. 랩원들의 후기를 부탁합니다.</h3>
 <p><img src="https://lh3.googleusercontent.com/1kd62PD4v3zemne3ezoOCYS47e8xULOOK_fyHTxQChCxb7hd2RcWbhDr_Bh2GxOKfVe-4ai4bT6Z=s50" alt="" title="김훈민"><strong>김훈민</strong> :</p>
 <p>처음 딥러닝을 접한 후 혼자서 독학을 시작하고 답답한 마음이 많았어요. 무엇을 어떻게 공부해야 할지 잘 모르는 상태였거든요. 딥러닝 기초 책을 보며 예제 코드를 따라 하고 이해하는 수준이었죠. 그러던 중에 좋은 기회가 있어 ‘한국인공지능연구소’에 참여를 하게 되었고, 많은 새로운 정보들을 얻고 여러 가지 경험을 해볼 기회가 되었다고 생각해요. 특히 여러 논문 리뷰를 하며 여러 모델 구조를 이해하는 능력을 많이 키웠다고 생각해요. 제가 연구원으로 활동하며 얻은 것 중 가장 큰 결과랍니다. 항상 많은 정보를 공유해주시는 아트플로우 랩장님과 랩원들께 감사하게 생각하고 있어요! 앞으로도 아트플로우 화이팅입니다~!</p>
