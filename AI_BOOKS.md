@@ -77,6 +77,50 @@
 <center>LSTM(Long Short-Term Memory) 구조</center>
 <p><img src="https://lh3.googleusercontent.com/JCElC-S7Oh8ERUkNxE99JqpL7bP7_naNibkPHEaSnIMhUCbIwrlM_YToiWoDfb5YKPOykktOJ1-r=s50" alt="" title="박성은"><strong>박성은</strong> :</p>
 <p></p>
+<p><img src="https://lh3.googleusercontent.com/EEh6AtQW8AOdzrf_JzB1bXZ9gyHkUlXc__MyiTId_281HuMyQvmqZKGfW6_T1hPsBgYQ0rtv3e0k=s50" alt="" title="윤현근"><strong>윤현근</strong> :</p>
+<p>
+</p><center>Convolutional Neural Network</center>
+<ol>
+<li>CNN</li>
+</ol>
+<p>CNN은 1980년대부터 이미지 인식 분야에 사용되었지만 최근 들어서 컴퓨터 성능의 향상과 많은 양의 훈련데이터, 다양한 기술 덕분에 복잡한 이미지 처리 문제에 좋은 성능을 낼 수 있었습니다. 또한 시각 분야에 국한되지 않고 음성 인식, 자연어 처리 등에도 사용됩니다.</p>
+<ol start="2">
+<li>CNN의 구조<br>
+<img src="https://lh3.googleusercontent.com/x9jKEpkBPX-MD-0ANa2sbsQlUMoEzNwckf5423dKlDObA6qhRkC2pNyn3hr3K_hTfyzLX4J1s4xf=s700" alt="" title="cnn"></li>
+</ol>
+<p>2.1 합성곱층(Convolution layer)</p>
+<p>CNN에서 가장 중요한 구성 요소이며 입력된 이미지 전체가 아닌 부분의 값을 읽어</p>
+<p>특성을 파악합니다. 여러 개의 층을 통해서 초기에는 저 수준 특성(선, 점등)을</p>
+<p>파악하고 더 깊은 층을 통해서 고 수준 특성(눈, 코, 입등)을 파악하는 계층적 구조를</p>
+<p>가지고 있으며 이러한 특성이 CNN을 이미지 인식에 많이 사용하는 이유입니다.</p>
+<p>2.2 필터(Filter) 또는 커널(Kernel)</p>
+<p>필터는 수평선, 수직선과 같이 서로 다른 특성을 가지고 있으며 입력 이미지를 필터를</p>
+<p>이용하여 합성곱을 구하는 과정을 통해 필터와 유사한 이미지의 영역을 강조하는</p>
+<p>특성맵(feature map)을 만들어냅니다.</p>
+<p>2.3풀링(Pooling)</p>
+<p>계산량과 메모리 사용량, 파라미터 수를 줄이기 위해 이미지의 축소본을 만드는</p>
+<p>것입니다. 다양한 방법이 있지만 가장 널리 사용되는 방법은 Max Pooling이며 작은</p>
+<p>커널에서 최대값만을 남기고 나머지 값은 버리는 방법으로 해당 영역의 가장 큰</p>
+<p>특성을 파악합니다.</p>
+<ol start="3">
+<li>CNN 특징</li>
+</ol>
+<ul>
+<li>
+<p>파라미터 공유 : 모델의 전체 파라미터 수를 급격하게 줄여줌</p>
+</li>
+<li>
+<p>학습된 패턴의 평행 이동 불변성 : 한 지점의 패턴을 인식하도록 학습되었다면 다른</p>
+</li>
+</ul>
+<p>어느 위치에 있더라도 패턴을 인식, DNN은 그 위치에 있을 때만 감지</p>
+<ul>
+<li>계층적 구조 : 매우 복잡하고 추상적인 시각적 개념을 효과적으로 학습</li>
+</ul>
+<ol start="4">
+<li>다양한 CNN 종류</li>
+</ol>
+<p>이 기본 구조를 활용하여 다양한 형태의 CNN이 개발되었고 이는 인공지능 분야의 발전을 이끌었습니다. 그 종류로는 LeNet-5, AlexNet, GoogLeNet, ResNet등이 있습니다.</p>
 <p><img src="https://lh3.googleusercontent.com/KuG8ITu2uYEPzkFN8heXISyqcljp073gjwTBxX7L_KsLPUv_LkGyP2mwmVubFu_NlfQT21Nh2j1P=s50" alt="" title="이준석"><strong>이준석</strong> :</p>
 <p>RNN(Recurrent Neuron Network)과 LSTM(Long Short Term Memory)
 </p><p>RNN은 기존의 신경망과 다른 독특한 특징을 가지고 있습니다. 기존의 신경망은 input이 들어가고 여러 layer들을 거쳐 output이 나오는 형태였다면, RNN은 이전 output값이 input값과 함께 고려되어 들어갑니다. 이러한 이유로 보통 RNN이 ‘기억 능력’을 갖고 있다고 이야기합니다. 하지만 RNN의 문제는 gradient를 구하는데 어려움이 있다는 점입니다. Gradient 값을 구하기 위해 미분을 하다 보면 gradient가 0이 되거나 무한대로 발산을 하는 경우가 생기게 됩니다. 이러한 문제점을 해결하기 위해 고안된 방법이 LSTM입니다. LSTM의 가장 큰 특징은 필요에 따라 기억들을 지우고 더하는 알고리즘이 있다는 점입니다. 잊어야 할 정보들은 기억에서 잊고, 추가해야 할 정보들은 추가하면서 RNN 보다 더 효율적으로 활용이 가능합니다. </p><center><img src="https://lh3.googleusercontent.com/oTHCKlEGZ3WJCV30EJtv4iXgS6iZAQQ2hKFyxRaYrps4LN2kuZhB_DmbqnoPjUD2GtdRmBPUcDGR=s700" alt="" title="rnn"><br>
