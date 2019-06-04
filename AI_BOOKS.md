@@ -193,6 +193,14 @@ GAN (Generative Adversarial System)</center><p></p>
 <p>&lt;![if !supportEmptyParas]&gt; &lt;![endif]&gt;</p>
 <p>Tsung-Yi Lin1,2, Piotr Doll´ ar1, Ross Girshick1, Kaiming He1, Bharath Hariharan1, and Serge Belongie</p>
 <p>[Feature Pyramid Networks for Object Detection]</p>
+<p><img src="https://lh3.googleusercontent.com/6E48N4HzEvzux8H5qd9jFC96tkEKqXH7DBg8gnAtfoe5E-0FU2PZgjO5kmEJyY9xZOabPUrs28ME=s50" alt="" title="전민종"><strong>전민종</strong> :</p>
+<p>
+SSD 같은 경우에는 우선 trade-off 문제를 해결하기 위해서 고안되었습니다. Trade-off 문제란, 속도를 향상시키게 되면 정확도가 떨어지고, 정확도를 향상시키면 속도가 떨어지는 현상입니다. 이런 trade-off문제를 해결하기 위해 고안된 ssd의 가장 큰 특징 2가지는 single shot detector 와 multi scale feature maps for detection입니다.
+</p><p>우선 ssd의 구조를 살펴 보게 되면, ssd는 크게 3가지의 구조로 나눌 수 있습니다. 첫번째로는 이미지를 입력 받고, 두번째 단계에서는 특징을 추출 및 분류를 하며 마지막으로는 축적된 특징들을 통해서 Non-Maximum Suppression과 비용함수 설정을 통해서 값을 산출하고 피드백을 주는 구조입니다.<br>
+<img src="https://lh3.googleusercontent.com/kImF32Fy7HZjWqJUdIiUsrHSD-f3PYBPImlhwMj_aNkH-amK1wDDn8UZf-9LavlPO76f_OWecuGb=s700" alt="" title="ssd"></p>
+<p>첫번 째 특징으로 Single Shot Detector 관련해서 말하면, Fast RCNN과 RFCN 같은 Dector들 같은 경우에는 2-Stage Detector입니다. 2-Stage Detector를 간단하게 말하자면, Region proposal과 classfication이 차례대로 일어납니다. 따라서 한번 추출을 하고, bounding box를 조정하여 다시 특징을 추출하는 작업이 반복적으로 일어나게 됩니다. 반면에 1-Stage Detector 같은 경우에는 Region Proposal과 classification이 동시에 일어나기 때문에 bounding box를 계속 조정하는 반복을 하지 않아도 되는 장점이 있습니다.</p>
+<p>두번 째 특징으로는 multi scale feature maps for detection입니다. 위에서 말한 Region Proposal과 classification을 동시에 하게 해주는 방법입니다. 이러한 특징의 가장 기본 원리는 bounding box 크기는 그대로 두고 입력 받은 이미지를 개념적으로 축소 한다는 것입니다. 이렇게 개념적으로 축소를 하게되면 처음에 발견하지 못했던 특징들도 축소를 통해 점점 자세히 볼 수 있게 되면서 찾을 수 있게 됩니다. 특히 밑에 사진을 보면 기존의 Detector로는 같은 이미지 내에서 사물의 크기가 너무 상이할 경우에는 서로 다른 boundig box를 적용해야 돼서 시간이 더 걸렸지만 ssd는 이를 해결하게 해줍니다. 이렇게 여러개의 feature들을 추출 한 후 축적하여 nms를 통해서 최종적으로 분류 및 피드백을 제공합니다.<br>
+<img src="https://lh3.googleusercontent.com/cKicxl77K8kKXvCklM_YwjE1bzFispQR9Y8Y4iYVXb9MNRaVbHxVShSTuWKq2V_uOuOAfFtnrzDL=s700" alt="" title="dogs"></p>
 
 <h3>13. 랩원들의 후기를 부탁합니다.</h3>
 <p><img src="https://lh3.googleusercontent.com/1kd62PD4v3zemne3ezoOCYS47e8xULOOK_fyHTxQChCxb7hd2RcWbhDr_Bh2GxOKfVe-4ai4bT6Z=s50" alt="" title="김훈민"><strong>김훈민</strong> :</p>
