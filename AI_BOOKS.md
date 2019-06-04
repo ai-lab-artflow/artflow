@@ -189,7 +189,7 @@ GAN (Generative Adversarial System)</center><p></p>
 <p><img src="https://lh3.googleusercontent.com/cHGP_g0BEOP58XnxCjEhDqVwXJ62Gtxf6k0VYNTPEio7WrbXFpM3u-LZaxa8VkF_KkDSxk42aePr=s700" alt="" title="r-cnn2"></p>
 <p>이런 단점을 극복한 것인 Fast R-CNN입니다. 후보 영역에 대해 CNN을 실행하는 것이 아니라 먼저 Selective Search로 영역에 대한 정보(x, y, w, h)만 구해놓고 CNN을 실행합니다. CNN을 거쳐 나온 특성맵(Feature map)에서 앞서 구한 정보를 투영시켜 영역을 구합니다. 이렇게 영역을 구하는 단계가 “ROI(Region of Interest) Pooling Layer”입니다. 이 각각의 영역을 다시 Fully Connected Layer에서 합한 후 분류(Classification)와 Bounding Box Regression을 합니다.</p>
 <p>그런데 실제로 성능을 측정해 보면 객체 탐지(Object Detection)시 상당 시간을 Selective Search에 사용합니다. CNN은 GPU에서 구동이 되지만 Selective Search는 알고리즘 특성상 CPU에서 구동을 할 수 밖에 없습니다.</p>
-<p>이런 단점을 보안 한 것이 Faster R-CNN입니다. Faster R-CNN은 Selective Search를 대신해서 CNN을 사용한 Region Proposal Network를 제안합니다.<br>
+<p>이런 단점을 보안 한 것이 Faster R-C Faster R-CNN은 Selective Search를 대신해서 CNN을 사용한 Region Proposal Network를 제안합니다.<br>
 <img src="https://lh3.googleusercontent.com/vEVi9GrA2LLc9d-cc-lJs03x8rplIX4lMEJol5PhSMaCfnD_8TKqA9SNVOxNJ8fBpBVMRqs8L3b7=s700" alt="" title="r-cnn3"></p>
 <p>CNN의 결과로 나온 특성 맵(Feature Map)을 Region Proposal Network에 넣어 객체가 있는지 없는지 여부와 Bounding Box Regression을 통해 Box를 어떻게 그려야하는지에 대한 결과를 받습니다. 이 결과와 특성 맵(Feature Map)에서 ROI Pooling을 통해 객체를 분류(Classification) 합니다. 추가적으로 Faster R-CNN에서는 Region Proposal Network에서 Anchor Box라는 개념을 도입했습니다. Region Proposal Network에서는 Sliding Window(보통 3X3 Convolution Layer)로 후보 영역을 찾습니다. 그리고 이때 사용하는 후보 Box를 미리 사전에 정의를 해서 쉽게 Bounding Box Regression을 할 수 있도록 합니다.<br>
 <img src="https://lh3.googleusercontent.com/Smxn6tqM7lmCj8oCVi7AlxfMDU_HWz0rzWajGc3pTOSz5P5_U_CoYrrVoxPJLLXUD3Q8KRO9o1CF=s700" alt="" title="r-cnn4"></p>
@@ -252,4 +252,10 @@ RetinaNet
 <p>솔직히 처음 한국인공지능연구소 데모 데이 때 가서 다른 랩들의 발표를 들으면서 지레 겁을 먹고 집에 다시 돌아갈까 수십 번은 고민했습니다. 또 함께 듣는 사람들은 발표를 들으면서도 다들 코딩하고 있고 있더라고요. ‘아 이게 진짜 개발자들인가…’라는 생각이 들어 정신이 다 나간 기분이였습니다. 결국 마지막까지도 어떤 랩에도 들어가지 못하고 방황하다 같은 처지인 사람들끼리 모였었는데 벌써 6개월이 지났네요. 인원이 이렇게 많은데도 이탈 없이 잘 진행되는 건 다 훌륭한 랩장님과 랩원들 덕분인 것 같습니다(아 물론 무엇보다도 제가 굉장히 인격적으로도 훌륭하고 뛰어난 사람이기에 가능했다고 믿어 의심치 않고요.). 항상 너무 즐거운 분위기와 에너지를 내는 랩원들 모두 애정하구요~ 앞으로도 계속 같이 연구할 수 있으면 좋겠습니다!</p>
 <p><img src="https://lh3.googleusercontent.com/mOf9s-aE5jf0XkAaapzsioKBE4eMQSeTGNXjDEagMzn5WmcNrfCYlNZB3xlqm3sjOLH6Qu1KBh9V=s50" alt="" title="조원양"><strong>조원양</strong> :</p>
 <p>처음에는 과연 아트플로우 랩이 얼마나 갈 것인가에 대해 걱정을 많이 했습니다. 파이썬을 설치 안 해본 연구원들도 많았고 텐서플로우나 파이토치가 뭔지도 모르는 연구원들도 많았습니다. 하지만 매 기수 연구원들이 수가 늘고 참여하는 연구원들의 실력이 향상되는 것을 보면 참여하기를 잘했다는 생각이 듭니다. 서로 끌어주고 밀어주면서 좋은 사람들이 모여서 즐겁게 연구를 할 수 있다는 것 자체만으로도 행복합니다.</p>
+<h3>Artflow 사진들</h3>
+<p><img src="https://lh3.googleusercontent.com/lsuHRJU7iT4kmdzbrRr68_qnvMVXoCePcnB-cwg1H7DM7F6kFKw0fuIuQeTLtxLGr8kZ1mtWTPYn=s500" alt="" title="artflow1"></p>
+<p><img src="https://lh3.googleusercontent.com/6zXCa2myDVNumh7e3OLawS8nqZIP9e9tUlXXNukg7lncJ2CjT0o_JW_E_KpsKy2YR-q6_aYUHIgw=s500" alt="" title="artflow2"></p>
+<p><img src="https://lh3.googleusercontent.com/crLFxEPZf7-YisZtwWKokxhpVKPjE_0u0xP7WuHT6uSoCGuXlZlS3JyA1VOM0inTKwxkwEeoEJgg=s500" alt="" title="artflow3"></p>
+<p><img src="https://lh3.googleusercontent.com/PrQKAF1tpf1unzAp1Ns7g88p61AvcXwg5hB8Y5Mo6fidIhAPXp-3scvCoy4JwUGV2_jmyjm7Z9Wb=s500" alt="" title="artflow4"></p>
+<p><img src="https://lh3.googleusercontent.com/ZFH_UyDQ0wwX_6-SPkQ978dlOyW48hTG3aPnt0BqhJyEIXk8X_JhW3chQZm5KqElOOnIZ1FXL8E1" alt="" title="artflow 5"></p>
 
