@@ -76,8 +76,7 @@
 <p>RNN의 학습에 사용되는 알고리즘인 Backpropagation through time의 경우 각 Time step마다 오류를 측정하고 이전 step으로 전파합니다. 처리하고자 하는 데이터가 길어질수록 역전파시 기울기가 0에 아주 가까운 값으로 수렴하게 되는 기울기 소실 문제(Vanishing gradient problem)가 발생할 것입니다. 그리고 Time Step이 길어질수록 예전에 있던 정보를 기억하지 못하게 됩니다.</p>
 <p>이러한 RNN의 문제점을 보완하기 위해 나온 LSTM(Long Short-Term Memory)은 여러 개의 게이트가 합쳐져 있는 구조며 선택적으로 정보들이 기억될 수 있도록 합니다. 먼저 이전 step에서 기억하는 cell state의 정보를 얼마나 잊을지 결정하고 새로운 정보를 얼마나 기억할지 결정하여 cell state에 추가합니다. 그리고 앞의 결과에 의해 정해진 cell state와 입력을 이용하여 어떤 값을 출력할지 결정하게 되는 구조입니다. 이렇게 결정되는 cell state는 장기적으로 이전 상태들을 기억 할 수 있게 도와주는 역할을 합니다.<br>
 <img src="https://lh3.googleusercontent.com/Mvaim9wL82Lb1Xqa7jwb13hTMqT2ONQr3aiMLdDMuq-qSdv3qdyLVNjEapEqGcCharsIs4lfiO9E=s700" alt="" title="lstm"></p>
-<center>LSTM(Long Short-Term Memory) 구조</center>
-<br>
+<center>LSTM(Long Short-Term Memory) 구조</center> <br>
 <p><img src="https://lh3.googleusercontent.com/EEh6AtQW8AOdzrf_JzB1bXZ9gyHkUlXc__MyiTId_281HuMyQvmqZKGfW6_T1hPsBgYQ0rtv3e0k=s50" alt="" title="윤현근"><strong>윤현근</strong> :</p>
 <p>
 </p><center>Convolutional Neural Network</center>
