@@ -5,7 +5,7 @@
 
 <h1> 아트플로우 
 </h1> <h3>1. 랩 이름이 뭔가요? </h3>
-Artflow
+<strong>Artflow</strong>
  <p></p><h3>2. 랩 이름을 왜 이렇게 지었나요?</h3>
  art라는 것은 우리나라에서는 예술이란 의미로 많이 쓰이지만 프랑스는 기술, 독일은 종류라는 의미로 많이 쓰여요. 그래서 우리는 art라는 예술과 AI의 흐름, AI를 위한 다양한 소프트웨어(종류)라는 의미와 flow라는 ‘흐르다’라는 의미가 합쳐져 ‘Artflow’가 탄생되었어요.<p></p>
 <h3>3. 랩원들을 소개해주세요.</h3>
@@ -66,6 +66,15 @@ Artflow
 <p>저에게 가장 인상깊은 에피소드라 하면… 아트플로우는 항상 모임이 합정이나 공덕에서 진행되었습니다. 이게 왕복이 3시간이라 저한테 굉장히 멀다고 느껴졌습니다. 스터디의 랩 활동은 4시간 남짓 안되는데 한번은 공덕에 지하철을 타고 가다가 ‘진짜 도저히 안되겠다!’라는 마음이 들어, 그날 바로 장소를 바꾸자는 건의를 하였습니다. 칠판에 각자 사는 곳을 적어 놓고 중간 지점을 정하는데 마침 다행히도 각자 사는 곳이 비슷해서 드디어 공덕, 합정을 탈출했습니다! 이런 건의를 한 제가 너무 뿌듯하고 자랑스럽고 대견스럽습니다. 우리 앞으로는 사당에서 만나요!</p>
 <p><img src="https://lh3.googleusercontent.com/mOf9s-aE5jf0XkAaapzsioKBE4eMQSeTGNXjDEagMzn5WmcNrfCYlNZB3xlqm3sjOLH6Qu1KBh9V=s50" alt="" title="조원양"><strong>조원양</strong> :</p>
 <p>제일 생각이 많이 나는 것은 처음에 결성될 때입니다. 다들 뭘 해야 할지 몰라서 남아있던 연구원들이었고 대부분 파이썬을 설치조차 해본 적이 없던 연구원들이 많았습니다. 다들 모였는데 현업 개발자라는 이유만으로 임시 랩장을 맡았었네요. 지금은 규칙을 바꿔서 돌아가면서 랩장을 하기로 했습니다...</p>
+<h3>12. 다음의 랩 결과물에 대해 설명해주세요.(코드와 설명)</h3>
+<p><img src="https://lh3.googleusercontent.com/1kd62PD4v3zemne3ezoOCYS47e8xULOOK_fyHTxQChCxb7hd2RcWbhDr_Bh2GxOKfVe-4ai4bT6Z=s50" alt="" title="김훈민"><strong>김훈민</strong> :<br>
+RNN(Recurrent Neural Networks) 순환 신경망이란 결과값을 출력층 방향으로도 보내면서 다시 은닉층의 다음 Time step의 입력으로 보내는 특징을 갖습니다. 이러한 특징 때문에 이전의 연산이 이후 연산에 영향을 미치는 구조이고 자연어나 시계열 데이터와 같이 앞선 데이터가 현재 처리 결과에 영향을 주는 데이터처리에 효율적입니다.<br>
+<img src="https://lh3.googleusercontent.com/fJbjCDGoiN0ovPkuPcHt-p81RH7GbSsWeTOy6wrfWi_5E0pFTtmfrN9_CDpwk437JfS3zfZHx-2j=s700" alt="" title="lstm"></p>
+<center> Simple RNN(Recurrent Nueral Networks)구조</center>
+<p>RNN의 학습에 사용되는 알고리즘인 Backpropagation through time의 경우 각 Time step마다 오류를 측정하고 이전 step으로 전파합니다. 처리하고자 하는 데이터가 길어질수록 역전파시 기울기가 0에 아주 가까운 값으로 수렴하게 되는 기울기 소실 문제(Vanishing gradient problem)가 발생할 것입니다. 그리고 Time Step이 길어질수록 예전에 있던 정보를 기억하지 못하게 됩니다.</p>
+<p>이러한 RNN의 문제점을 보완하기 위해 나온 LSTM(Long Short-Term Memory)은 여러 개의 게이트가 합쳐져 있는 구조며 선택적으로 정보들이 기억될 수 있도록 합니다. 먼저 이전 step에서 기억하는 cell state의 정보를 얼마나 잊을지 결정하고 새로운 정보를 얼마나 기억할지 결정하여 cell state에 추가합니다. 그리고 앞의 결과에 의해 정해진 cell state와 입력을 이용하여 어떤 값을 출력할지 결정하게 되는 구조입니다. 이렇게 결정되는 cell state는 장기적으로 이전 상태들을 기억 할 수 있게 도와주는 역할을 합니다.<br>
+<img src="https://lh3.googleusercontent.com/Mvaim9wL82Lb1Xqa7jwb13hTMqT2ONQr3aiMLdDMuq-qSdv3qdyLVNjEapEqGcCharsIs4lfiO9E=s700" alt="" title="lstm"></p>
+<center>LSTM(Long Short-Term Memory) 구조</center>
 <h3>13. 랩원들의 후기를 부탁합니다.</h3>
 <p><img src="https://lh3.googleusercontent.com/1kd62PD4v3zemne3ezoOCYS47e8xULOOK_fyHTxQChCxb7hd2RcWbhDr_Bh2GxOKfVe-4ai4bT6Z=s50" alt="" title="김훈민"><strong>김훈민</strong> :</p>
 <p>처음 딥러닝을 접한 후 혼자서 독학을 시작하고 답답한 마음이 많았어요. 무엇을 어떻게 공부해야 할지 잘 모르는 상태였거든요. 딥러닝 기초 책을 보며 예제 코드를 따라 하고 이해하는 수준이었죠. 그러던 중에 좋은 기회가 있어 ‘한국인공지능연구소’에 참여를 하게 되었고, 많은 새로운 정보들을 얻고 여러 가지 경험을 해볼 기회가 되었다고 생각해요. 특히 여러 논문 리뷰를 하며 여러 모델 구조를 이해하는 능력을 많이 키웠다고 생각해요. 제가 연구원으로 활동하며 얻은 것 중 가장 큰 결과랍니다. 항상 많은 정보를 공유해주시는 아트플로우 랩장님과 랩원들께 감사하게 생각하고 있어요! 앞으로도 아트플로우 화이팅입니다~!</p>
