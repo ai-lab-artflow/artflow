@@ -6,6 +6,7 @@
 <h1> 아트플로우 
 </h1> <h3>1. 랩 이름이 뭔가요? </h3>
 <strong>Artflow</strong>
+<p><img src="https://lh3.googleusercontent.com/MGChlOz8zgG7wpazeaEH13FufFDv55TUnd5dUAVr7p_fHiOxys4br92Fbri0rcl7ZQ2OARlekZg6=s500" alt="" title="artflow"></p>
  <p></p><h3>2. 랩 이름을 왜 이렇게 지었나요?</h3>
  art라는 것은 우리나라에서는 예술이란 의미로 많이 쓰이지만 프랑스는 기술, 독일은 종류라는 의미로 많이 쓰여요. 그래서 우리는 art라는 예술과 AI의 흐름, AI를 위한 다양한 소프트웨어(종류)라는 의미와 flow라는 ‘흐르다’라는 의미가 합쳐져 ‘Artflow’가 탄생되었어요.<p></p>
 <h3>3. 랩원들을 소개해주세요.</h3>
