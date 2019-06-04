@@ -22,7 +22,7 @@
 <p> 평소 개발에 관심이 많아서, 이곳 저곳 개발할 곳을 찾고 있었습니다. 그러던 중, 저희 과 선배인 전민종님께서 아트플로우 랩실을 추천해줬고, 마침 인공지능에 흥미가 생기던 중이라 팀에 합류하게 되었습니다. 처음에는 인공지능의 개념들이 생소해 공부하는데 어려움을 겪었지만, 몇 번 발표를 준비하고 공부를 하면서 흥미가 생기게 되었습니다. 아직 정해진 진로는 없지만, AI에 대해 좀 더 오래 공부해보고, 적성이 맞다면 인공지능 관련 일에 종사하고 싶습니다. </p>
 <p><img src="https://lh3.googleusercontent.com/7lsIIljE5rgp8KzskVHL7LORoL2Bb4u-PjVSwGzgf1I7h-4fHWknz64e5pNsQJIB6nr8DqZ3bqGS=s50" alt="" title="이지은"><strong>이지은</strong> :</p>
 <p>산업공학을 전공하고 있는 대학생입니다. 다양한 분야의 수업을 듣다가 IT 분야에 흥미를 느꼈고, 이론에서 끝나는 수업에서 더 나아가 실제로 적용해보는 프로젝트에 참여해보고 싶다고 생각하던 때에 과 선배를 통해 ‘한국인공지능연구소’에 대해 알게 되었습니다. 초보자에게도 활짝 문이 열려 있고, 함께 이런저런 시도를 해보자는 ‘아트플로우’의 취지에 반해 합류하게 되었어요. 이 분야가 알면 알수록 배울 것이 무궁무진하고 신기한 것들이 많아 즐겁게 공부하고 있습니다.</p>
-<p><strong>임하경</strong> :</p>
+<p><img src="https://lh3.googleusercontent.com/jkArkChfIMdrRwGHpQz-msVMRffZGFUdzlFCb2f4J2dCRPbP6_gQvPF5Cqq-gO2rDLH4FLPZ3fCc=s50" alt="" title="임하경"><strong>임하경</strong> :</p>
 <p>저는 원래 인공지능에는 별 관심이 없었고 코딩이라는 것도 어렵고 지루한 것이라고만 생각하고 있었습니다. 그런데 알파고 이후 인공지능은 정말 빨리 발전하는 것 같았고 이러다가 정말 나중엔 의사도 인공지능에 의해 완전히 대체되지 않을까 하고 위기의식도 많이 느꼈습니다. 병원에서 일하시는 교수님들도 그렇게 많이 느끼신 것 같았습니다. 그래서 인공지능, 딥러닝이라는게 도대체 뭐길래 이런 변화를 가져올 수 있는 걸까, 항상 궁금했습니다. 그러던 와중에 제 친구 민종이가 한국인공지능연구소에 같이 참여 하자고 하였고 저도 좋은 기회라는 생각에 연구활동에 참여하게 되었습니다.</p>
 <p><img src="https://lh3.googleusercontent.com/RICyunnCjhRK8WYrUhJQkeFJ2uk0aNgr_wR7LiD_vUnFmSALHqJPHVfKdtNhgF6_xHeBd9heeZf6=s50" alt="" title="임한동"><strong>임한동</strong> :</p>
 <p>기계공학도로서 하드웨어만 주로 다루다가 학교에서 진행한 파이썬 
@@ -60,7 +60,7 @@
 <p><img src="https://lh3.googleusercontent.com/RICyunnCjhRK8WYrUhJQkeFJ2uk0aNgr_wR7LiD_vUnFmSALHqJPHVfKdtNhgF6_xHeBd9heeZf6=s50" alt="" title="임한동"><strong>임한동</strong> :</p>
 <p>랩 활동 초반에 아는 것도 없는데 랩장님이 저에게 논문 요약 발표 기회를 주셨습니다. 발표를 잘 할 수 있을까 걱정을 많이 했는데 준비하는 과정에서 많이 배웠던 것 같고 제가 발표한 부분이 3개월 활동 동안 가장 기억에 많이 남았습니다. 인생은 역시 일단 부딪히고 봐야 된다는 인생 교훈을 또 얻었습니다.
 </p><p>그리고 4기 마지막 날 회식을 했었는데 다음 기수 랩장을 민주적인 사다리타기 게임으로 정한 것이 가장 인상적이었습니다. 왜냐하면 제가 당첨되었기 때문이죠. 전혀 생각지 못하고 있었는데 이런 뜻밖의 행운의 기회가…호박이 넝쿨째 굴러들어와서 잊지 못할 밤이었던 것 같습니다.</p>
-<p><strong>임하경</strong> :</p>
+<p><img src="https://lh3.googleusercontent.com/jkArkChfIMdrRwGHpQz-msVMRffZGFUdzlFCb2f4J2dCRPbP6_gQvPF5Cqq-gO2rDLH4FLPZ3fCc=s50" alt="" title="임하경"><strong>임하경</strong> :</p>
 <p>가장 기억에 남았던 건 랩원들끼리 모여서 처음으로 코드를 돌려보았을 때였습니다. Retinanet이라는 코드였는데 collaboratory로 돌리자 마자 오류가 떴습니다. 그래서 쥬피터 노트북으로 다시 돌려보았는데 또 실행되지 않았고 그 뒤로는 tensorflow를 다른 버전으로 깔아보고, cuda도 깔아보고 하면서 코드 하나 실행해보려고 별의 별 짓을 다 했습니다. 결국 저희는 두시간 동안 노트북과 씨름하다가 결국 그 코드는 돌리지 못했습니다. 저는 그때 처음으로 코드 하나 실행하는 것도 쉬운게 아니라는 것을 느꼈고 개발활경 구축하는 것부터 제대로 배워야겠다고 생각했죠, 그때 경험이 있었기 때문에 나중에 코드를 돌릴 때 오류가 나더라도 당황하지 않고 의연하게 대처할 수 있었던 것 같아요,</p>
 <p><img src="https://lh3.googleusercontent.com/6E48N4HzEvzux8H5qd9jFC96tkEKqXH7DBg8gnAtfoe5E-0FU2PZgjO5kmEJyY9xZOabPUrs28ME=s50" alt="" title="전민종"><strong>전민종</strong> :</p>
 <p>저에게 가장 인상깊은 에피소드라 하면… 아트플로우는 항상 모임이 합정이나 공덕에서 진행되었습니다. 이게 왕복이 3시간이라 저한테 굉장히 멀다고 느껴졌습니다. 스터디의 랩 활동은 4시간 남짓 안되는데 한번은 공덕에 지하철을 타고 가다가 ‘진짜 도저히 안되겠다!’라는 마음이 들어, 그날 바로 장소를 바꾸자는 건의를 하였습니다. 칠판에 각자 사는 곳을 적어 놓고 중간 지점을 정하는데 마침 다행히도 각자 사는 곳이 비슷해서 드디어 공덕, 합정을 탈출했습니다! 이런 건의를 한 제가 너무 뿌듯하고 자랑스럽고 대견스럽습니다. 우리 앞으로는 사당에서 만나요!</p>
@@ -134,6 +134,11 @@ GAN (Generative Adversarial System)</center><p></p>
 <img src="https://lh3.googleusercontent.com/qMkuLVmXuApWlac-rz2kEkDze2dNsokH5WsKN-le21rnPeo5D7JJ1v4gHtJWeW3y0-Y_wHKsXzX2=s700" alt="" title="plot-history"><br>
 <img src="https://lh3.googleusercontent.com/kBMXu2r8a-hrHsiM-dO12mDk1fKTfqSqoP_0B4QRlYes0AOcTlUm75_Tbqt4u9FUYqqjsjIyWiLD=s700" alt="" title="plotting"></p>
 <p>이 외에도 가중치를 규제하는 방법, 드롭 아웃을 추가하는 방법 등이 있습니다.</p>
+<p><img src="https://lh3.googleusercontent.com/jkArkChfIMdrRwGHpQz-msVMRffZGFUdzlFCb2f4J2dCRPbP6_gQvPF5Cqq-gO2rDLH4FLPZ3fCc=s50" alt="" title="임하경"><strong>임하경</strong> :</p>
+<p>
+</p><p><img src="https://lh3.googleusercontent.com/xC3j1O31UZEvVppuCm4j13oWek8-Od2KmVjxw6XnCJQHBPNKNULXgVmcVh4jyLnk63hManKSE-Df=s700" alt="" title="r-cnn"></p>
+<p>기존의 Faster R-CNN은 image에서 convolution layer를 통해 feature map을 뽑아내고 Region Proposal Network를 통해 bounding box를 뽑아냈습니다. 이 새로 개발된 Region Proposal Network를 통해 매우 빠른 속도로 bounding box를 뽑아낼 수 있었기 때문에 faster R=CNN은 fast R-CNN보다 월등히 빨랐습니다.</p>
+<p>Mask R-CNN은 이 Faster R-CNN에 FCN을 추가한 모델입니다. FCN이란 Fully conncected neural network의 약자이며 sementic segmentation을 위해 개발된 모델이었습니다. Faster R-CNN을 비롯한 기존의 image detection 모델은 bounding box를 통해 object를 detection하고 classification을 통해 그 object의 label이 무엇인지 파악하는 구조였습니다. 즉 detection과 classification이 모델을 이루는 두 뼈대였고 이 두 가지 소스를 통해 모델의 가중치가 학습되었습니다. 그런데 Faster R-CNN은 여기에 segmentation이라는 모델을 하나도 추가해 준 것입니다. 따라서 이 모델은 두 가지가 아닌 세 가지 소스로 가중치가 학습되었고 따라서 정확도가 기존의 모습보다 더 향상되지 않을 수 없었습니다. 그리고 이 방법은 사람이 사물을 인식하는 것과도 더 닮았습니다. 우리도 사물을 볼 때 그 사물의 위치를 잡을 뿐만 아니라 그 사물을 segementation하여 정확한 모양을 파악하니까요.</p>
 <h3>13. 랩원들의 후기를 부탁합니다.</h3>
 <p><img src="https://lh3.googleusercontent.com/1kd62PD4v3zemne3ezoOCYS47e8xULOOK_fyHTxQChCxb7hd2RcWbhDr_Bh2GxOKfVe-4ai4bT6Z=s50" alt="" title="김훈민"><strong>김훈민</strong> :</p>
 <p>처음 딥러닝을 접한 후 혼자서 독학을 시작하고 답답한 마음이 많았어요. 무엇을 어떻게 공부해야 할지 잘 모르는 상태였거든요. 딥러닝 기초 책을 보며 예제 코드를 따라 하고 이해하는 수준이었죠. 그러던 중에 좋은 기회가 있어 ‘한국인공지능연구소’에 참여를 하게 되었고, 많은 새로운 정보들을 얻고 여러 가지 경험을 해볼 기회가 되었다고 생각해요. 특히 여러 논문 리뷰를 하며 여러 모델 구조를 이해하는 능력을 많이 키웠다고 생각해요. 제가 연구원으로 활동하며 얻은 것 중 가장 큰 결과랍니다. 항상 많은 정보를 공유해주시는 아트플로우 랩장님과 랩원들께 감사하게 생각하고 있어요! 앞으로도 아트플로우 화이팅입니다~!</p>
