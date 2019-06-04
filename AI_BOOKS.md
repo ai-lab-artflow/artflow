@@ -178,11 +178,38 @@ GAN (Generative Adversarial System)</center><p></p>
 <img src="https://lh3.googleusercontent.com/qMkuLVmXuApWlac-rz2kEkDze2dNsokH5WsKN-le21rnPeo5D7JJ1v4gHtJWeW3y0-Y_wHKsXzX2=s700" alt="" title="plot-history"><br>
 <img src="https://lh3.googleusercontent.com/kBMXu2r8a-hrHsiM-dO12mDk1fKTfqSqoP_0B4QRlYes0AOcTlUm75_Tbqt4u9FUYqqjsjIyWiLD=s700" alt="" title="plotting"></p>
 <p>이 외에도 가중치를 규제하는 방법, 드롭 아웃을 추가하는 방법 등이 있습니다.</p>
-<p><img src="https://lh3.googleusercontent.com/jkArkChfIMdrRwGHpQz-msVMRffZGFUdzlFCb2f4J2dCRPbP6_gQvPF5Cqq-gO2rDLH4FLPZ3fCc=s50" alt="" title="임하경"><strong>임하경</strong> :</p>
+<p><img src="https://lh3.googleusercontent.com/mOf9s-aE5jf0XkAaapzsioKBE4eMQSeTGNXjDEagMzn5WmcNrfCYlNZB3xlqm3sjOLH6Qu1KBh9V=s50" alt="" title="조원양"><strong>조원양</strong> :</p>
+<p>
+객체 탐지에 관련된 review
+</p><p>객체 탐지(Object Detection)는 크게 두가지 방법으로 나눌 수 있습니다. 한가지 방법은 이단계(two stage) 방법입니다. 먼저 객체가 있을 것 같은 영역을 찾은 후 그 영역을 기반으로 객체를 탐지 합니다. R-CNN이라는 논문으로부터 시작이 되었습니다. 이 논문에서는 객체 탐지에서 CNN을 특성추출(Feature Extractor)로 사용하였습니다. 이 후에 이 논문을 기반으로 Fast R-CNN, Faster R-CNN 그리고 Mask R-CNN과 같은 방법이 등장합니다. 다른 한가지 방법은 일단계(one stage) 방법입니다. 이 방법의 특징은 보통 원본 이미지를 고정된 사이즈 그리드 영역으로 나누는데요. 알고리즘은 각 영역에 대해 형태와 크기가 미리 결정된 객체의 고정 개수를 예측합니다. SSD, YOLO, FPN(Feature Pyramid Network), RetinaNet등이 일단계(one stage)방법입니다. 두 개의 방법의 차이점은 정확도와 속도입니다. 정확도 면에서는 일단계(one stage)방법이, 속도면에서는 이단계(two stage)방법이 더 좋은 성능을 가집니다.</p>
+<p>아트플로우에서는 이단계 (two stage) 방법인 Fast R-CNN, Faster R-CNN 그리고 Mask R-CNN과 일단계(one stage) 방법인 SSD, FPN(Feature Pyramid Network), RetianNet에 관련된 논문을 리뷰했습니다. 이단계(two stage)방법 중 하나인 R-CNN을 먼저 간략하게 살펴 보겠습니다.<br>
+<img src="https://lh3.googleusercontent.com/8NFNWaM3MV-tQPAfe2Ur3vsITmD_C4KVmYa42zV0QVEqQUTzq6AtHxThflLBQBky15n-MLrs9zwI=s700" alt="" title="rcnn"></p>
+<p>위의 그림에서 보듯이 R-CNN은 먼저 Selective Search로 먼저 객체가 있을 것 같은 영역을 찾습니다. 그리고 그 영역을 각각 CNN에 넣어서 이미지를 분류합니다. 그중에 가장 확률이 높은 영역에 대해 Bounding Box Regression으로 Box를 그립니다. 개념적으로는 단순하고 이해하기 쉽습니다. 그러나 Selective Search로 찾은 영역 각각에 대해 모두 CNN을 실행하기 때문에 상당히 느립니다.</p>
+<p><img src="https://lh3.googleusercontent.com/cHGP_g0BEOP58XnxCjEhDqVwXJ62Gtxf6k0VYNTPEio7WrbXFpM3u-LZaxa8VkF_KkDSxk42aePr=s700" alt="" title="r-cnn2"></p>
+<p>이런 단점을 극복한 것인 Fast R-CNN입니다. 후보 영역에 대해 CNN을 실행하는 것이 아니라 먼저 Selective Search로 영역에 대한 정보(x, y, w, h)만 구해놓고 CNN을 실행합니다. CNN을 거쳐 나온 특성맵(Feature map)에서 앞서 구한 정보를 투영시켜 영역을 구합니다. 이렇게 영역을 구하는 단계가 “ROI(Region of Interest) Pooling Layer”입니다. 이 각각의 영역을 다시 Fully Connected Layer에서 합한 후 분류(Classification)와 Bounding Box Regression을 합니다.</p>
+<p>그런데 실제로 성능을 측정해 보면 객체 탐지(Object Detection)시 상당 시간을 Selective Search에 사용합니다. CNN은 GPU에서 구동이 되지만 Selective Search는 알고리즘 특성상 CPU에서 구동을 할 수 밖에 없습니다.</p>
+<p>이런 단점을 보안 한 것이 Faster R-CNN입니다. Faster R-CNN은 Selective Search를 대신해서 CNN을 사용한 Region Proposal Network를 제안합니다.<br>
+<img src="https://lh3.googleusercontent.com/vEVi9GrA2LLc9d-cc-lJs03x8rplIX4lMEJol5PhSMaCfnD_8TKqA9SNVOxNJ8fBpBVMRqs8L3b7=s700" alt="" title="r-cnn3"></p>
+<p>CNN의 결과로 나온 특성 맵(Feature Map)을 Region Proposal Network에 넣어 객체가 있는지 없는지 여부와 Bounding Box Regression을 통해 Box를 어떻게 그려야하는지에 대한 결과를 받습니다. 이 결과와 특성 맵(Feature Map)에서 ROI Pooling을 통해 객체를 분류(Classification) 합니다. 추가적으로 Faster R-CNN에서는 Region Proposal Network에서 Anchor Box라는 개념을 도입했습니다. Region Proposal Network에서는 Sliding Window(보통 3X3 Convolution Layer)로 후보 영역을 찾습니다. 그리고 이때 사용하는 후보 Box를 미리 사전에 정의를 해서 쉽게 Bounding Box Regression을 할 수 있도록 합니다.<br>
+<img src="https://lh3.googleusercontent.com/Smxn6tqM7lmCj8oCVi7AlxfMDU_HWz0rzWajGc3pTOSz5P5_U_CoYrrVoxPJLLXUD3Q8KRO9o1CF=s700" alt="" title="r-cnn4"></p>
+<p>이제 또 다른 이단계(two stage)방법 Mask r-cnn을 살펴보겠습니다.</p>
+<p><img src="https://lh3.googleusercontent.com/jkArkChfIMdrRwGHpQz-msVMRffZGFUdzlFCb2f4J2dCRPbP6_gQvPF5Cqq-gO2rDLH4FLPZ3fCc=s50" alt="" title="임하경"><strong><br>
+임하경</strong> :</p>
 <p>
 </p><p><img src="https://lh3.googleusercontent.com/xC3j1O31UZEvVppuCm4j13oWek8-Od2KmVjxw6XnCJQHBPNKNULXgVmcVh4jyLnk63hManKSE-Df=s700" alt="" title="r-cnn"></p>
 <p>기존의 Faster R-CNN은 image에서 convolution layer를 통해 feature map을 뽑아내고 Region Proposal Network를 통해 bounding box를 뽑아냈습니다. 이 새로 개발된 Region Proposal Network를 통해 매우 빠른 속도로 bounding box를 뽑아낼 수 있었기 때문에 faster R=CNN은 fast R-CNN보다 월등히 빨랐습니다.</p>
 <p>Mask R-CNN은 이 Faster R-CNN에 FCN을 추가한 모델입니다. FCN이란 Fully conncected neural network의 약자이며 sementic segmentation을 위해 개발된 모델이었습니다. Faster R-CNN을 비롯한 기존의 image detection 모델은 bounding box를 통해 object를 detection하고 classification을 통해 그 object의 label이 무엇인지 파악하는 구조였습니다. 즉 detection과 classification이 모델을 이루는 두 뼈대였고 이 두 가지 소스를 통해 모델의 가중치가 학습되었습니다. 그런데 Faster R-CNN은 여기에 segmentation이라는 모델을 하나도 추가해 준 것입니다. 따라서 이 모델은 두 가지가 아닌 세 가지 소스로 가중치가 학습되었고 따라서 정확도가 기존의 모습보다 더 향상되지 않을 수 없었습니다. 그리고 이 방법은 사람이 사물을 인식하는 것과도 더 닮았습니다. 우리도 사물을 볼 때 그 사물의 위치를 잡을 뿐만 아니라 그 사물을 segementation하여 정확한 모양을 파악하니까요.</p>
+
+이제는 일단계(one stage) 방법들인 SSD, FPN, Retinanet을 차례대로 살펴보겠습니다.
+<p><img src="https://lh3.googleusercontent.com/6E48N4HzEvzux8H5qd9jFC96tkEKqXH7DBg8gnAtfoe5E-0FU2PZgjO5kmEJyY9xZOabPUrs28ME=s50" alt="" title="전민종"><strong>전민종</strong> :</p>
+<p>
+SSD 같은 경우에는 우선 trade-off 문제를 해결하기 위해서 고안되었습니다. Trade-off 문제란, 속도를 향상시키게 되면 정확도가 떨어지고, 정확도를 향상시키면 속도가 떨어지는 현상입니다. 이런 trade-off문제를 해결하기 위해 고안된 ssd의 가장 큰 특징 2가지는 single shot detector 와 multi scale feature maps for detection입니다.
+</p><p>우선 ssd의 구조를 살펴 보게 되면, ssd는 크게 3가지의 구조로 나눌 수 있습니다. 첫번째로는 이미지를 입력 받고, 두번째 단계에서는 특징을 추출 및 분류를 하며 마지막으로는 축적된 특징들을 통해서 Non-Maximum Suppression과 비용함수 설정을 통해서 값을 산출하고 피드백을 주는 구조입니다.<br>
+<img src="https://lh3.googleusercontent.com/kImF32Fy7HZjWqJUdIiUsrHSD-f3PYBPImlhwMj_aNkH-amK1wDDn8UZf-9LavlPO76f_OWecuGb=s700" alt="" title="ssd"></p>
+<p>첫번 째 특징으로 Single Shot Detector 관련해서 말하면, Fast RCNN과 RFCN 같은 Dector들 같은 경우에는 2-Stage Detector입니다. 2-Stage Detector를 간단하게 말하자면, Region proposal과 classfication이 차례대로 일어납니다. 따라서 한번 추출을 하고, bounding box를 조정하여 다시 특징을 추출하는 작업이 반복적으로 일어나게 됩니다. 반면에 1-Stage Detector 같은 경우에는 Region Proposal과 classification이 동시에 일어나기 때문에 bounding box를 계속 조정하는 반복을 하지 않아도 되는 장점이 있습니다.</p>
+<p>두번 째 특징으로는 multi scale feature maps for detection입니다. 위에서 말한 Region Proposal과 classification을 동시에 하게 해주는 방법입니다. 이러한 특징의 가장 기본 원리는 bounding box 크기는 그대로 두고 입력 받은 이미지를 개념적으로 축소 한다는 것입니다. 이렇게 개념적으로 축소를 하게되면 처음에 발견하지 못했던 특징들도 축소를 통해 점점 자세히 볼 수 있게 되면서 찾을 수 있게 됩니다. 특히 밑에 사진을 보면 기존의 Detector로는 같은 이미지 내에서 사물의 크기가 너무 상이할 경우에는 서로 다른 boundig box를 적용해야 돼서 시간이 더 걸렸지만 ssd는 이를 해결하게 해줍니다. 이렇게 여러개의 feature들을 추출 한 후 축적하여 nms를 통해서 최종적으로 분류 및 피드백을 제공합니다.<br>
+<img src="https://lh3.googleusercontent.com/cKicxl77K8kKXvCklM_YwjE1bzFispQR9Y8Y4iYVXb9MNRaVbHxVShSTuWKq2V_uOuOAfFtnrzDL=s700" alt="" title="dogs"></p>
+
 <p><img src="https://lh3.googleusercontent.com/RICyunnCjhRK8WYrUhJQkeFJ2uk0aNgr_wR7LiD_vUnFmSALHqJPHVfKdtNhgF6_xHeBd9heeZf6=s50" alt="" title="임한동"><strong>임한동</strong> :</p>
 <p>FPN은 multi scale object detection의 accuracy를 향상시키기 위해 나온 network 입니다. 우선FPN에 활용되는 Image Pyramid 라는 개념에 관해 먼저 이야기를 하겠습니다. Image pyramid은 고전적인 컴퓨터 비전 영역에서 많이 사용되었는데, 일정 pixel 간격으로 subsampling 해서 image layer, 즉 size가 다른 image 층들을 만드는 것입니다. 피라미드 상단은 low level feature는 없어지고 high level feature만 남아서 semantic value가 커지게 되지만 해상도는 줄어들게 됩니다. 이렇게 사이즈가 다른 이미지들을 활용해 FPN은 Multi Scale Object Detection에서 좋은 성능을 보입니다.
 </p><p>물론, 기본적인 CNN 구조에 위에서 설명한 Image Pyramid을 활용할 수도 있지만 시간이 너무 오래 걸리다는 문제점이 발생합니다. 이러한 문제점을 해결하기 위해 SSD가 나왔습니다. 하지만 SSD의 겨우, feature map마다 semantic gap이 크고 처음에 나오는 맨 밑단의 feature map들은 semantic value가 낮은, 즉, low level feature들로 인해 여전히 scale variant object를 잘 detect하지 못하는 문제점이 발생합니다. 그래서 이러한 문제를 해결한 것이 FPN입니다.</p>
@@ -193,31 +220,14 @@ GAN (Generative Adversarial System)</center><p></p>
 <p>&lt;![if !supportEmptyParas]&gt; &lt;![endif]&gt;</p>
 <p>Tsung-Yi Lin1,2, Piotr Doll´ ar1, Ross Girshick1, Kaiming He1, Bharath Hariharan1, and Serge Belongie</p>
 <p>[Feature Pyramid Networks for Object Detection]</p>
-<p><img src="https://lh3.googleusercontent.com/6E48N4HzEvzux8H5qd9jFC96tkEKqXH7DBg8gnAtfoe5E-0FU2PZgjO5kmEJyY9xZOabPUrs28ME=s50" alt="" title="전민종"><strong>전민종</strong> :</p>
-<p>
-SSD 같은 경우에는 우선 trade-off 문제를 해결하기 위해서 고안되었습니다. Trade-off 문제란, 속도를 향상시키게 되면 정확도가 떨어지고, 정확도를 향상시키면 속도가 떨어지는 현상입니다. 이런 trade-off문제를 해결하기 위해 고안된 ssd의 가장 큰 특징 2가지는 single shot detector 와 multi scale feature maps for detection입니다.
-</p><p>우선 ssd의 구조를 살펴 보게 되면, ssd는 크게 3가지의 구조로 나눌 수 있습니다. 첫번째로는 이미지를 입력 받고, 두번째 단계에서는 특징을 추출 및 분류를 하며 마지막으로는 축적된 특징들을 통해서 Non-Maximum Suppression과 비용함수 설정을 통해서 값을 산출하고 피드백을 주는 구조입니다.<br>
-<img src="https://lh3.googleusercontent.com/kImF32Fy7HZjWqJUdIiUsrHSD-f3PYBPImlhwMj_aNkH-amK1wDDn8UZf-9LavlPO76f_OWecuGb=s700" alt="" title="ssd"></p>
-<p>첫번 째 특징으로 Single Shot Detector 관련해서 말하면, Fast RCNN과 RFCN 같은 Dector들 같은 경우에는 2-Stage Detector입니다. 2-Stage Detector를 간단하게 말하자면, Region proposal과 classfication이 차례대로 일어납니다. 따라서 한번 추출을 하고, bounding box를 조정하여 다시 특징을 추출하는 작업이 반복적으로 일어나게 됩니다. 반면에 1-Stage Detector 같은 경우에는 Region Proposal과 classification이 동시에 일어나기 때문에 bounding box를 계속 조정하는 반복을 하지 않아도 되는 장점이 있습니다.</p>
-<p>두번 째 특징으로는 multi scale feature maps for detection입니다. 위에서 말한 Region Proposal과 classification을 동시에 하게 해주는 방법입니다. 이러한 특징의 가장 기본 원리는 bounding box 크기는 그대로 두고 입력 받은 이미지를 개념적으로 축소 한다는 것입니다. 이렇게 개념적으로 축소를 하게되면 처음에 발견하지 못했던 특징들도 축소를 통해 점점 자세히 볼 수 있게 되면서 찾을 수 있게 됩니다. 특히 밑에 사진을 보면 기존의 Detector로는 같은 이미지 내에서 사물의 크기가 너무 상이할 경우에는 서로 다른 boundig box를 적용해야 돼서 시간이 더 걸렸지만 ssd는 이를 해결하게 해줍니다. 이렇게 여러개의 feature들을 추출 한 후 축적하여 nms를 통해서 최종적으로 분류 및 피드백을 제공합니다.<br>
-<img src="https://lh3.googleusercontent.com/cKicxl77K8kKXvCklM_YwjE1bzFispQR9Y8Y4iYVXb9MNRaVbHxVShSTuWKq2V_uOuOAfFtnrzDL=s700" alt="" title="dogs"></p>
-
 <p><img src="https://lh3.googleusercontent.com/mOf9s-aE5jf0XkAaapzsioKBE4eMQSeTGNXjDEagMzn5WmcNrfCYlNZB3xlqm3sjOLH6Qu1KBh9V=s50" alt="" title="조원양"><strong>조원양</strong> :</p>
 <p>
-객체 탐지에 관련된 review
-</p><p>객체 탐지(Object Detection)는 크게 두가지 방법으로 나눌 수 있습니다. 한가지 방법은 이단계(two stage) 방법입니다. 먼저 객체가 있을 것 같은 영역을 찾은 후 그 영역을 기반으로 객체를 탐지 합니다. R-CNN이라는 논문으로부터 시작이 되었습니다. 이 논문에서는 객체 탐지에서 CNN을 특성추출(Feature Extractor)로 사용하였습니다. 이 후에 이 논문을 기반으로 Fast R-CNN, Faster R-CNN 그리고 Mask R-CNN과 같은 방법이 등장합니다. 다른 한가지 방법은 일단계(one stage) 방법입니다. 이 방법의 특징은 보통 원본 이미지를 고정된 사이즈 그리드 영역으로 나누는데요. 알고리즘은 각 영역에 대해 형태와 크기가 미리 결정된 객체의 고정 개수를 예측합니다. SSD, YOLO, FPN(Feature Pyramid Network), RetinaNet등이 일단계(one stage)방법입니다. 두 개의 방법의 차이점은 정확도와 속도입니다. 정확도 면에서는 일단계(one stage)방법이, 속도면에서는 이단계(two stage)방법이 더 좋은 성능을 가집니다.</p>
-<p>아트플로우에서는 이단계 (two stage) 방법인 Fast R-CNN, Faster R-CNN 그리고 Mask R-CNN과 일단계(one stage) 방법인 SSD, FPN(Feature Pyramid Network), RetianNet에 관련된 논문을 리뷰했습니다.</p>
-<p>먼저 R-CNN을 간략하게 살펴 보겠습니다.<br>
-<img src="https://lh3.googleusercontent.com/8NFNWaM3MV-tQPAfe2Ur3vsITmD_C4KVmYa42zV0QVEqQUTzq6AtHxThflLBQBky15n-MLrs9zwI=s700" alt="" title="rcnn"></p>
-<p>위의 그림에서 보듯이 R-CNN은 먼저 Selective Search로 먼저 객체가 있을 것 같은 영역을 찾습니다. 그리고 그 영역을 각각 CNN에 넣어서 이미지를 분류합니다. 그중에 가장 확률이 높은 영역에 대해 Bounding Box Regression으로 Box를 그립니다. 개념적으로는 단순하고 이해하기 쉽습니다. 그러나 Selective Search로 찾은 영역 각각에 대해 모두 CNN을 실행하기 때문에 상당히 느립니다.</p>
-<p><img src="https://lh3.googleusercontent.com/cHGP_g0BEOP58XnxCjEhDqVwXJ62Gtxf6k0VYNTPEio7WrbXFpM3u-LZaxa8VkF_KkDSxk42aePr=s700" alt="" title="r-cnn2"></p>
-<p>이런 단점을 극복한 것인 Fast R-CNN입니다. 후보 영역에 대해 CNN을 실행하는 것이 아니라 먼저 Selective Search로 영역에 대한 정보(x, y, w, h)만 구해놓고 CNN을 실행합니다. CNN을 거쳐 나온 특성맵(Feature map)에서 앞서 구한 정보를 투영시켜 영역을 구합니다. 이렇게 영역을 구하는 단계가 “ROI(Region of Interest) Pooling Layer”입니다. 이 각각의 영역을 다시 Fully Connected Layer에서 합한 후 분류(Classification)와 Bounding Box Regression을 합니다.</p>
-<p>그런데 실제로 성능을 측정해 보면 객체 탐지(Object Detection)시 상당 시간을 Selective Search에 사용합니다. CNN은 GPU에서 구동이 되지만 Selective Search는 알고리즘 특성상 CPU에서 구동을 할 수 밖에 없습니다.</p>
-<p>이런 단점을 보안 한 것이 Faster R-CNN입니다. Faster R-CNN은 Selective Search를 대신해서 CNN을 사용한 Region Proposal Network를 제안합니다.<br>
-<img src="https://lh3.googleusercontent.com/vEVi9GrA2LLc9d-cc-lJs03x8rplIX4lMEJol5PhSMaCfnD_8TKqA9SNVOxNJ8fBpBVMRqs8L3b7=s700" alt="" title="r-cnn3"></p>
-<p>CNN의 결과로 나온 특성 맵(Feature Map)을 Region Proposal Network에 넣어 객체가 있는지 없는지 여부와 Bounding Box Regression을 통해 Box를 어떻게 그려야하는지에 대한 결과를 받습니다. 이 결과와 특성 맵(Feature Map)에서 ROI Pooling을 통해 객체를 분류(Classification) 합니다. 추가적으로 Faster R-CNN에서는 Region Proposal Network에서 Anchor Box라는 개념을 도입했습니다. Region Proposal Network에서는 Sliding Window(보통 3X3 Convolution Layer)로 후보 영역을 찾습니다. 그리고 이때 사용하는 후보 Box를 미리 사전에 정의를 해서 쉽게 Bounding Box Regression을 할 수 있도록 합니다.</p>
-<p><img src="https://lh3.googleusercontent.com/Smxn6tqM7lmCj8oCVi7AlxfMDU_HWz0rzWajGc3pTOSz5P5_U_CoYrrVoxPJLLXUD3Q8KRO9o1CF=s700" alt="" title="r-cnn4"></p>
-
+RetinaNet
+</p><p>Retina Net은 일단계 (one stage)의 정확도가 떨어지는 것이 “Forground와 Background Class의 불균형”으로 생각했습니다. 즉, 배경과 같이 쉽게 탐지가 가능한 것은 가중치를 낮추고 객체와 같이 배경에 비해 탐지가 어려운 것은 가중치를 높인 Focal Loss라는 손실함수를 사용합니다. SSD에서도 이런 문제를 해결하기 위해 Hard Negative Mining이라는 방법을 사용하였고 YOLO계열에서는 Confidence Score 라는 것을 사용했지만 Focal Loss가 상대적으로 사용하기가 쉽습니다.<br>
+<img src="https://lh3.googleusercontent.com/8vKQfWR38zvx0cgtE1JyPS2g3Qinzvum2ho5HzhaJeuTZ8Hv8GPhufxYYwQ2JmI5PwyDbwg3RTEh=s700" alt="" title="RETINA GRAPH"></p>
+<p>RetinaNet은 이 Focal Loss와 ResNet에 Feature Pyramid Network를 살짝 변형하여 사용한 네트워크입니다.<br>
+<img src="https://lh3.googleusercontent.com/TlgMv11pBEv5it47SWvm6WFwfWES6AzCTI76qv0QAc3n-pD7P9TK14nvW-lfG1RP1LcQbDVvy1oq=s700" alt="" title="retinanet"><br>
+&lt;![if !vml]&gt;![그림 입니다.</p>
 <h3>13. 랩원들의 후기를 부탁합니다.</h3>
 <p><img src="https://lh3.googleusercontent.com/1kd62PD4v3zemne3ezoOCYS47e8xULOOK_fyHTxQChCxb7hd2RcWbhDr_Bh2GxOKfVe-4ai4bT6Z=s50" alt="" title="김훈민"><strong>김훈민</strong> :</p>
 <p>처음 딥러닝을 접한 후 혼자서 독학을 시작하고 답답한 마음이 많았어요. 무엇을 어떻게 공부해야 할지 잘 모르는 상태였거든요. 딥러닝 기초 책을 보며 예제 코드를 따라 하고 이해하는 수준이었죠. 그러던 중에 좋은 기회가 있어 ‘한국인공지능연구소’에 참여를 하게 되었고, 많은 새로운 정보들을 얻고 여러 가지 경험을 해볼 기회가 되었다고 생각해요. 특히 여러 논문 리뷰를 하며 여러 모델 구조를 이해하는 능력을 많이 키웠다고 생각해요. 제가 연구원으로 활동하며 얻은 것 중 가장 큰 결과랍니다. 항상 많은 정보를 공유해주시는 아트플로우 랩장님과 랩원들께 감사하게 생각하고 있어요! 앞으로도 아트플로우 화이팅입니다~!</p>
