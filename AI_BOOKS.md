@@ -202,6 +202,22 @@ SSD 같은 경우에는 우선 trade-off 문제를 해결하기 위해서 고안
 <p>두번 째 특징으로는 multi scale feature maps for detection입니다. 위에서 말한 Region Proposal과 classification을 동시에 하게 해주는 방법입니다. 이러한 특징의 가장 기본 원리는 bounding box 크기는 그대로 두고 입력 받은 이미지를 개념적으로 축소 한다는 것입니다. 이렇게 개념적으로 축소를 하게되면 처음에 발견하지 못했던 특징들도 축소를 통해 점점 자세히 볼 수 있게 되면서 찾을 수 있게 됩니다. 특히 밑에 사진을 보면 기존의 Detector로는 같은 이미지 내에서 사물의 크기가 너무 상이할 경우에는 서로 다른 boundig box를 적용해야 돼서 시간이 더 걸렸지만 ssd는 이를 해결하게 해줍니다. 이렇게 여러개의 feature들을 추출 한 후 축적하여 nms를 통해서 최종적으로 분류 및 피드백을 제공합니다.<br>
 <img src="https://lh3.googleusercontent.com/cKicxl77K8kKXvCklM_YwjE1bzFispQR9Y8Y4iYVXb9MNRaVbHxVShSTuWKq2V_uOuOAfFtnrzDL=s700" alt="" title="dogs"></p>
 
+<p><img src="https://lh3.googleusercontent.com/mOf9s-aE5jf0XkAaapzsioKBE4eMQSeTGNXjDEagMzn5WmcNrfCYlNZB3xlqm3sjOLH6Qu1KBh9V=s50" alt="" title="조원양"><strong>조원양</strong> :</p>
+<p>
+객체 탐지에 관련된 review
+</p><p>객체 탐지(Object Detection)는 크게 두가지 방법으로 나눌 수 있습니다. 한가지 방법은 이단계(two stage) 방법입니다. 먼저 객체가 있을 것 같은 영역을 찾은 후 그 영역을 기반으로 객체를 탐지 합니다. R-CNN이라는 논문으로부터 시작이 되었습니다. 이 논문에서는 객체 탐지에서 CNN을 특성추출(Feature Extractor)로 사용하였습니다. 이 후에 이 논문을 기반으로 Fast R-CNN, Faster R-CNN 그리고 Mask R-CNN과 같은 방법이 등장합니다. 다른 한가지 방법은 일단계(one stage) 방법입니다. 이 방법의 특징은 보통 원본 이미지를 고정된 사이즈 그리드 영역으로 나누는데요. 알고리즘은 각 영역에 대해 형태와 크기가 미리 결정된 객체의 고정 개수를 예측합니다. SSD, YOLO, FPN(Feature Pyramid Network), RetinaNet등이 일단계(one stage)방법입니다. 두 개의 방법의 차이점은 정확도와 속도입니다. 정확도 면에서는 일단계(one stage)방법이, 속도면에서는 이단계(two stage)방법이 더 좋은 성능을 가집니다.</p>
+<p>아트플로우에서는 이단계 (two stage) 방법인 Fast R-CNN, Faster R-CNN 그리고 Mask R-CNN과 일단계(one stage) 방법인 SSD, FPN(Feature Pyramid Network), RetianNet에 관련된 논문을 리뷰했습니다.</p>
+<p>먼저 R-CNN을 간략하게 살펴 보겠습니다.<br>
+<img src="https://lh3.googleusercontent.com/8NFNWaM3MV-tQPAfe2Ur3vsITmD_C4KVmYa42zV0QVEqQUTzq6AtHxThflLBQBky15n-MLrs9zwI=s700" alt="" title="rcnn"></p>
+<p>위의 그림에서 보듯이 R-CNN은 먼저 Selective Search로 먼저 객체가 있을 것 같은 영역을 찾습니다. 그리고 그 영역을 각각 CNN에 넣어서 이미지를 분류합니다. 그중에 가장 확률이 높은 영역에 대해 Bounding Box Regression으로 Box를 그립니다. 개념적으로는 단순하고 이해하기 쉽습니다. 그러나 Selective Search로 찾은 영역 각각에 대해 모두 CNN을 실행하기 때문에 상당히 느립니다.</p>
+<p><img src="https://lh3.googleusercontent.com/cHGP_g0BEOP58XnxCjEhDqVwXJ62Gtxf6k0VYNTPEio7WrbXFpM3u-LZaxa8VkF_KkDSxk42aePr=s700" alt="" title="r-cnn2"></p>
+<p>이런 단점을 극복한 것인 Fast R-CNN입니다. 후보 영역에 대해 CNN을 실행하는 것이 아니라 먼저 Selective Search로 영역에 대한 정보(x, y, w, h)만 구해놓고 CNN을 실행합니다. CNN을 거쳐 나온 특성맵(Feature map)에서 앞서 구한 정보를 투영시켜 영역을 구합니다. 이렇게 영역을 구하는 단계가 “ROI(Region of Interest) Pooling Layer”입니다. 이 각각의 영역을 다시 Fully Connected Layer에서 합한 후 분류(Classification)와 Bounding Box Regression을 합니다.</p>
+<p>그런데 실제로 성능을 측정해 보면 객체 탐지(Object Detection)시 상당 시간을 Selective Search에 사용합니다. CNN은 GPU에서 구동이 되지만 Selective Search는 알고리즘 특성상 CPU에서 구동을 할 수 밖에 없습니다.</p>
+<p>이런 단점을 보안 한 것이 Faster R-CNN입니다. Faster R-CNN은 Selective Search를 대신해서 CNN을 사용한 Region Proposal Network를 제안합니다.<br>
+<img src="https://lh3.googleusercontent.com/vEVi9GrA2LLc9d-cc-lJs03x8rplIX4lMEJol5PhSMaCfnD_8TKqA9SNVOxNJ8fBpBVMRqs8L3b7=s700" alt="" title="r-cnn3"></p>
+<p>CNN의 결과로 나온 특성 맵(Feature Map)을 Region Proposal Network에 넣어 객체가 있는지 없는지 여부와 Bounding Box Regression을 통해 Box를 어떻게 그려야하는지에 대한 결과를 받습니다. 이 결과와 특성 맵(Feature Map)에서 ROI Pooling을 통해 객체를 분류(Classification) 합니다. 추가적으로 Faster R-CNN에서는 Region Proposal Network에서 Anchor Box라는 개념을 도입했습니다. Region Proposal Network에서는 Sliding Window(보통 3X3 Convolution Layer)로 후보 영역을 찾습니다. 그리고 이때 사용하는 후보 Box를 미리 사전에 정의를 해서 쉽게 Bounding Box Regression을 할 수 있도록 합니다.</p>
+<p><img src="https://lh3.googleusercontent.com/Smxn6tqM7lmCj8oCVi7AlxfMDU_HWz0rzWajGc3pTOSz5P5_U_CoYrrVoxPJLLXUD3Q8KRO9o1CF=s700" alt="" title="r-cnn4"></p>
+
 <h3>13. 랩원들의 후기를 부탁합니다.</h3>
 <p><img src="https://lh3.googleusercontent.com/1kd62PD4v3zemne3ezoOCYS47e8xULOOK_fyHTxQChCxb7hd2RcWbhDr_Bh2GxOKfVe-4ai4bT6Z=s50" alt="" title="김훈민"><strong>김훈민</strong> :</p>
 <p>처음 딥러닝을 접한 후 혼자서 독학을 시작하고 답답한 마음이 많았어요. 무엇을 어떻게 공부해야 할지 잘 모르는 상태였거든요. 딥러닝 기초 책을 보며 예제 코드를 따라 하고 이해하는 수준이었죠. 그러던 중에 좋은 기회가 있어 ‘한국인공지능연구소’에 참여를 하게 되었고, 많은 새로운 정보들을 얻고 여러 가지 경험을 해볼 기회가 되었다고 생각해요. 특히 여러 논문 리뷰를 하며 여러 모델 구조를 이해하는 능력을 많이 키웠다고 생각해요. 제가 연구원으로 활동하며 얻은 것 중 가장 큰 결과랍니다. 항상 많은 정보를 공유해주시는 아트플로우 랩장님과 랩원들께 감사하게 생각하고 있어요! 앞으로도 아트플로우 화이팅입니다~!</p>
@@ -217,7 +233,7 @@ SSD 같은 경우에는 우선 trade-off 문제를 해결하기 위해서 고안
 <p>처음에는 ‘혼자 뒤쳐지면 어떡하지?’라는 두려움이 있었습니다. 하지만, 랩원들이 너무 친절하셨고 랩장님도 너무 좋으셔서 그런 걱정은 금방 사라졌습니다. 돌아가면서 발표를 하면서 얻어가는 것도 너무 많았고, 정말 편안한 분위기에서 공부를 할 수 있어서 너무 좋았습니다. 제일 좋은 것은 너무 노는 분위기도 아니고, 그렇다고 딱딱한 분위기도 아닌 편안한 분위기에서 공부할 수 있는 것입니다. 앞으로도 계속 아트플로우 랩실에서 열심히 공부할 것이고, 좋은 분들과 함께 하게 되어서 매우 뿌듯합니다.</p>
 <p><img src="https://lh3.googleusercontent.com/7lsIIljE5rgp8KzskVHL7LORoL2Bb4u-PjVSwGzgf1I7h-4fHWknz64e5pNsQJIB6nr8DqZ3bqGS=s50" alt="" title="이지은"><strong>이지은</strong> :</p>
 <p>벌써 4기 활동이 끝났나 싶을 정도로 빠르게 지나갔던 것 같습니다. 다양한 분야와 연령대의 사람들이 모인 만큼 어디에서도 들을 수 없는 이야기들을 듣는 것이 즐거웠고, 많은 인원이 모였음에도 다들 열심히 발표 준비를 하셔서 저도 더 열심히 임하게 되었던 것 같습니다. 브이로그, 책 집필 등 새로운 시도들을 해볼 계획이고, 회식 이후로 친밀도도 더욱 급상승해서 앞으로의 활동이 무척이나 기대됩니다.</p>
-<p><strong>임하경</strong></p>
+<p><img src="https://lh3.googleusercontent.com/jkArkChfIMdrRwGHpQz-msVMRffZGFUdzlFCb2f4J2dCRPbP6_gQvPF5Cqq-gO2rDLH4FLPZ3fCc=s50" alt="" title="임하경"><strong>임하경</strong> :</p>
 <p>두 기수 동안 랩 활동을 진행하면서 이 분야는 정말 어렵다고 느꼈습니다. 처음 시작할땐 나도 열심히 하면 모델도 새로 개발하고 더 낫게 수정도 할 수 있을 것만 같았는데 공부를 시작해보니 모델의 종류도 너무나 많고 돌아가는 원리를 이해하는 것만으로도 벅차더군요. 그래도 계속 진행할 수 있었던 것 좋은 랩원 분들이 있어서였던 것 같습니다. 공부가 부족하더라도 서로 이해해주고 부담없는 환경에서 편안하게 랩활동을 할 수 있었기 때문에 6개월 동안 꾸준하게 할 수 있었던 것 같습니다. 앞으로도 이렇게 좋은 분들이랑 즐겁게 랩활동 할수 있기를 바랍니다~</p>
 <p><img src="https://lh3.googleusercontent.com/RICyunnCjhRK8WYrUhJQkeFJ2uk0aNgr_wR7LiD_vUnFmSALHqJPHVfKdtNhgF6_xHeBd9heeZf6=s50" alt="" title="임한동"><strong>임한동</strong> :</p>
 <p>아트플로우 활동은 2주 간격으로 local minima에 빠진 저를 구원해주는 그런 존재였습니다. 매 활동마다 많이 배워가고 새로운 인사이트를 얻을 수 있었습니다. 결과적으로 3개월이라는 짧은 시간 동안 많이 발전할 수 있었던 것 같습니다. 랩장님이 잘 지도해주시고 특히 다 같이 참여하는 분위기가 형성되어 랩 구성원들 모두가 같이 성장해 나갈 수 있었습니다. 마지막에는 랩 구성원들 모두가 친해져 다음 기수 랩 활동도 아주 학수고대하고 있습니다.</p>
