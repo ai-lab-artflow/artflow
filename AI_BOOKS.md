@@ -67,14 +67,73 @@
 <p><img src="https://lh3.googleusercontent.com/mOf9s-aE5jf0XkAaapzsioKBE4eMQSeTGNXjDEagMzn5WmcNrfCYlNZB3xlqm3sjOLH6Qu1KBh9V=s50" alt="" title="조원양"><strong>조원양</strong> :</p>
 <p>제일 생각이 많이 나는 것은 처음에 결성될 때입니다. 다들 뭘 해야 할지 몰라서 남아있던 연구원들이었고 대부분 파이썬을 설치조차 해본 적이 없던 연구원들이 많았습니다. 다들 모였는데 현업 개발자라는 이유만으로 임시 랩장을 맡았었네요. 지금은 규칙을 바꿔서 돌아가면서 랩장을 하기로 했습니다...</p>
 <h3>12. 다음의 랩 결과물에 대해 설명해주세요.(코드와 설명)</h3>
-<p><img src="https://lh3.googleusercontent.com/1kd62PD4v3zemne3ezoOCYS47e8xULOOK_fyHTxQChCxb7hd2RcWbhDr_Bh2GxOKfVe-4ai4bT6Z=s50" alt="" title="김훈민"><strong>김훈민</strong> :<br>
-RNN(Recurrent Neural Networks) 순환 신경망이란 결과값을 출력층 방향으로도 보내면서 다시 은닉층의 다음 Time step의 입력으로 보내는 특징을 갖습니다. 이러한 특징 때문에 이전의 연산이 이후 연산에 영향을 미치는 구조이고 자연어나 시계열 데이터와 같이 앞선 데이터가 현재 처리 결과에 영향을 주는 데이터처리에 효율적입니다.<br>
-<img src="https://lh3.googleusercontent.com/fJbjCDGoiN0ovPkuPcHt-p81RH7GbSsWeTOy6wrfWi_5E0pFTtmfrN9_CDpwk437JfS3zfZHx-2j=s700" alt="" title="lstm"></p>
+<p><img src="https://lh3.googleusercontent.com/1kd62PD4v3zemne3ezoOCYS47e8xULOOK_fyHTxQChCxb7hd2RcWbhDr_Bh2GxOKfVe-4ai4bT6Z=s50" alt="" title="김훈민"><strong>김훈민</strong> :</p>
+<p>RNN(Recurrent Neural Networks) 순환 신경망이란 결과값을 출력층 방향으로도 보내면서 다시 은닉층의 다음 Time step의 입력으로 보내는 특징을 갖습니다. 이러한 특징 때문에 이전의 연산이 이후 연산에 영향을 미치는 구조이고 자연어나 시계열 데이터와 같이 앞선 데이터가 현재 처리 결과에 영향을 주는 데이터처리에 효율적입니다.
+</p><p><img src="https://lh3.googleusercontent.com/fJbjCDGoiN0ovPkuPcHt-p81RH7GbSsWeTOy6wrfWi_5E0pFTtmfrN9_CDpwk437JfS3zfZHx-2j=s700" alt="" title="simple rnn"></p>
 <center> Simple RNN(Recurrent Nueral Networks)구조</center>
 <p>RNN의 학습에 사용되는 알고리즘인 Backpropagation through time의 경우 각 Time step마다 오류를 측정하고 이전 step으로 전파합니다. 처리하고자 하는 데이터가 길어질수록 역전파시 기울기가 0에 아주 가까운 값으로 수렴하게 되는 기울기 소실 문제(Vanishing gradient problem)가 발생할 것입니다. 그리고 Time Step이 길어질수록 예전에 있던 정보를 기억하지 못하게 됩니다.</p>
 <p>이러한 RNN의 문제점을 보완하기 위해 나온 LSTM(Long Short-Term Memory)은 여러 개의 게이트가 합쳐져 있는 구조며 선택적으로 정보들이 기억될 수 있도록 합니다. 먼저 이전 step에서 기억하는 cell state의 정보를 얼마나 잊을지 결정하고 새로운 정보를 얼마나 기억할지 결정하여 cell state에 추가합니다. 그리고 앞의 결과에 의해 정해진 cell state와 입력을 이용하여 어떤 값을 출력할지 결정하게 되는 구조입니다. 이렇게 결정되는 cell state는 장기적으로 이전 상태들을 기억 할 수 있게 도와주는 역할을 합니다.<br>
 <img src="https://lh3.googleusercontent.com/Mvaim9wL82Lb1Xqa7jwb13hTMqT2ONQr3aiMLdDMuq-qSdv3qdyLVNjEapEqGcCharsIs4lfiO9E=s700" alt="" title="lstm"></p>
 <center>LSTM(Long Short-Term Memory) 구조</center>
+<p><img src="https://lh3.googleusercontent.com/JCElC-S7Oh8ERUkNxE99JqpL7bP7_naNibkPHEaSnIMhUCbIwrlM_YToiWoDfb5YKPOykktOJ1-r=s50" alt="" title="박성은"><strong>박성은</strong> :</p>
+<p></p>
+<p><img src="https://lh3.googleusercontent.com/KuG8ITu2uYEPzkFN8heXISyqcljp073gjwTBxX7L_KsLPUv_LkGyP2mwmVubFu_NlfQT21Nh2j1P=s50" alt="" title="이준석"><strong>이준석</strong> :</p>
+<p>RNN(Recurrent Neuron Network)과 LSTM(Long Short Term Memory)
+</p><p>RNN은 기존의 신경망과 다른 독특한 특징을 가지고 있습니다. 기존의 신경망은 input이 들어가고 여러 layer들을 거쳐 output이 나오는 형태였다면, RNN은 이전 output값이 input값과 함께 고려되어 들어갑니다. 이러한 이유로 보통 RNN이 ‘기억 능력’을 갖고 있다고 이야기합니다. 하지만 RNN의 문제는 gradient를 구하는데 어려움이 있다는 점입니다. Gradient 값을 구하기 위해 미분을 하다 보면 gradient가 0이 되거나 무한대로 발산을 하는 경우가 생기게 됩니다. 이러한 문제점을 해결하기 위해 고안된 방법이 LSTM입니다. LSTM의 가장 큰 특징은 필요에 따라 기억들을 지우고 더하는 알고리즘이 있다는 점입니다. 잊어야 할 정보들은 기억에서 잊고, 추가해야 할 정보들은 추가하면서 RNN 보다 더 효율적으로 활용이 가능합니다. </p><center><img src="https://lh3.googleusercontent.com/oTHCKlEGZ3WJCV30EJtv4iXgS6iZAQQ2hKFyxRaYrps4LN2kuZhB_DmbqnoPjUD2GtdRmBPUcDGR=s700" alt="" title="rnn"><br>
+GAN (Generative Adversarial System)</center><p></p>
+<p>GAN은 최근 많은 주목을 받고 있는 신경망으로, 적대적 시스템으로 이미지를 생성하는 인공 신경망입니다. 적대적 시스템이라 하면, 정과 반의 모순적 대립을 통해 최적값을 찾아내는 것을 뜻합니다. GAN에는 generator와 discriminator가 있습니다. Generator는 임의의 설정된 정보(latent space)를 바탕으로 가상의 이미지를 만들어 내는 신경망 구조의 생성 시스템을 뜻합니다. Discriminator는 입력된 이미지가 진짜 이미지일 확률(0과 1사이 값)을 출력값으로 하여 일치의 정도를 출력하는 시스템입니다. 쉽게 예를 들어, 지폐 위조범은 generator, 경찰을 discriminator라고 가정했을 때, 지폐위조범은 위조 지폐를 만들어 경찰을 속이기 위해 보여줍니다. 그러면 경찰은 그 위조 지폐를 보고 이것이 진짜 지폐인지, 가짜 지폐인지를 판별합니다. 즉, 이러한 역할을 통해 진짜 같은 가짜 이미지를 만들어내는 신경망을 GAN이라고 합니다. 이는 GAN의 generator의 결과물을 우리가 원하는 데로 마음껏 조작할 수 있다는 가능성을 확인한 것이며, 단순한 데이터의 분류로서의 이해가 아닌 새로운 것을 창조할 능력을 지게 된 것을 의미합니다.<br>
+<img src="https://lh3.googleusercontent.com/nYnLHMZVQ5O-oiRrAdrfX9K3hOx7TKa32H0hnHT_MTBTv_BpGo7hNJum75CGzeNpa3wjRdGgIQtK=s600" alt="" title="gan"></p>
+
+<p><img src="https://lh3.googleusercontent.com/7lsIIljE5rgp8KzskVHL7LORoL2Bb4u-PjVSwGzgf1I7h-4fHWknz64e5pNsQJIB6nr8DqZ3bqGS=s50" alt="" title="이지은"><strong>이지은</strong> :</p>
+<p>&lt;케라스 창시자에게 배우는 딥러닝 – 프랑소와 숄레 / 4장 발표 요약&gt;
+</p><p>전체 머신 러닝은 복잡한 하위 분류를 가진 방대한 분야인데, 일반적으로 지도, 비지도, 자기 지도, 강화 학습의 범주로 나눌 수 있습니다.</p>
+<ul>
+<li>지도 학습 (supervised learning) : 가장 흔한 경우로 샘플 데이터가 주어지면</li>
+</ul>
+<p>알고 있는 타깃에 입력 데이터를 매핑하는 방법을 학습합니다.</p>
+<ul>
+<li>비지도 학습 (unsupervised learning) : 어떤 타깃도 사용하지 않고 입력 데이터에</li>
+</ul>
+<p>대한 흥미로운 변환을 찾습니다 데이터 시각화, 압축, 노이즈 제거 또는 데이터에</p>
+<p>있는 상관관계를 더 잘 이해하기 위해 사용합니다.</p>
+<ul>
+<li>자기 지도 학습 (self-supervised learning) : 학습 과정에 사람이 개입하지 않는</li>
+</ul>
+<p>지도 학습이라고 생각할 수 있습니다. 보통 경험적인 알고리즘을 사용해서</p>
+<p>입력 데이터로부터 생성합니다.</p>
+<ul>
+<li>강화 학습 (reinforcement learning) : 에이전트(agent)는 환경에 대한 정보를 받아</li>
+</ul>
+<p>보상을 최대화하는 행동을 선택하도록 학습됩니다. 현재 강화 학습은 대부분 연구</p>
+<p>영역에 속해 있고 게임 이외에 실제적인 성공 사례는 아직 없습니다.</p>
+<p>머신 러닝의 목표는 처음 본 데이터에서 잘 작동하는 일반화된 모델을 얻는 것입니다. 모델의 성능을 평가하기 위한 대표적인 세 가지 평가방법은 다음과 같습니다.</p>
+<ul>
+<li>단순 홀드아웃 검증 : 이것은 아주 기본적인 검증 방법으로 단순히 훈련 데이터와</li>
+</ul>
+<p>테스트 데이터로 나누고, 나눠진 훈련 데이터에서 다시 검증 데이터셋을</p>
+<p>따로 떼어내는 방법입니다.</p>
+<ul>
+<li>K-겹 교차 검증 : 데이터를 동일한 크기를 가진 K개의 분할로 나눕니다, 각 분할 I에</li>
+</ul>
+<p>대해 남은 K-1 개의 분할로 모델을 훈련하고 분할 i에서 모델을 평가합니다.</p>
+<p>최종 점수는 이렇게 얻은 K개의 점수를 평균합니다.</p>
+<ul>
+<li>셔플링을 사용한 반복 K-겹 교차 검증 : 이 방법은 K-겹 교차 검증을 여러 번</li>
+</ul>
+<p>적용하되 K개의 분할로 나누기 전에 매번 데이터를 무작위로 섞는 것입니다.</p>
+<p>따라서 비용이 매우 많이 든다는 단점이 있습니다.</p>
+<p>모델 평가 외에도 모델 개발로 들어가기 전에 데이터 전처리라는 중요한 과정이 있습니다. 데이터 전처리의 목적은 주어진 원본 데이터를 신경망에 적용하기 쉽도록 만드는 것입니다.</p>
+<p>다음은 데이터 벡터화 방법 중 ‘원-핫 인코딩(One-hot encoding)’에 관한 것입니다.<br>
+<img src="https://lh3.googleusercontent.com/I7BwJpNaC4PMdTKkkcHK6U0MPDFxUoWcmcZXWhLxssDI_lIvputAq46KRFTdDRITgiouQojtv3lc=s700" alt="" title="one-hot"><br>
+이 외에도 값 정규화, 누락된 값 다루기, 특성 공학 등의 처리를 해줘야 합니다.</p>
+<p>머신 러닝의 근본적인 이슈는 최적화와 일반화 사이의 줄다리기입니다. 과대 적합을 피하기위해 가장 단순하게 네트워크 크기를 축소 시킬 수 있습니다.<br>
+<img src="https://lh3.googleusercontent.com/RM0OqiBKKsRtE2YY1Hx8nk50PmQtm9KfTtfC_RGfSGSl4eQU4M_KBMILX43GsQcXd2M616JmsML1=s700" alt="" title="base line"></p>
+<p><img src="https://lh3.googleusercontent.com/cjrIHd3hSyklhY8J70Oc4-5x_lDfKldg2aI22Pqy1JGxnx5LYWdOr2a1vuOb5O7xHiatNtubx-0n=s700" alt="" title="baselinehistory"><br>
+<img src="https://lh3.googleusercontent.com/YkLZK8xmtyVyXLfYmuK5qFn1hG6sajPgN0z-oZjJKX36eQvC7-BPZUoFsgO_bgqBmtzupkFl0QO3=s700" alt="" title="smaller"><br>
+<img src="https://lh3.googleusercontent.com/JOZq8aKSls1Gsx5QOJRyEg_jmrgLNZEvFkV_Umeir4wyviSVFaix6i9o0MmdkTITJHx451KOduu8=s700" alt="" title="bigger"><br>
+<img src="https://lh3.googleusercontent.com/qMkuLVmXuApWlac-rz2kEkDze2dNsokH5WsKN-le21rnPeo5D7JJ1v4gHtJWeW3y0-Y_wHKsXzX2=s700" alt="" title="plot-history"><br>
+<img src="https://lh3.googleusercontent.com/kBMXu2r8a-hrHsiM-dO12mDk1fKTfqSqoP_0B4QRlYes0AOcTlUm75_Tbqt4u9FUYqqjsjIyWiLD=s700" alt="" title="plotting"></p>
+<p>이 외에도 가중치를 규제하는 방법, 드롭 아웃을 추가하는 방법 등이 있습니다.</p>
 <h3>13. 랩원들의 후기를 부탁합니다.</h3>
 <p><img src="https://lh3.googleusercontent.com/1kd62PD4v3zemne3ezoOCYS47e8xULOOK_fyHTxQChCxb7hd2RcWbhDr_Bh2GxOKfVe-4ai4bT6Z=s50" alt="" title="김훈민"><strong>김훈민</strong> :</p>
 <p>처음 딥러닝을 접한 후 혼자서 독학을 시작하고 답답한 마음이 많았어요. 무엇을 어떻게 공부해야 할지 잘 모르는 상태였거든요. 딥러닝 기초 책을 보며 예제 코드를 따라 하고 이해하는 수준이었죠. 그러던 중에 좋은 기회가 있어 ‘한국인공지능연구소’에 참여를 하게 되었고, 많은 새로운 정보들을 얻고 여러 가지 경험을 해볼 기회가 되었다고 생각해요. 특히 여러 논문 리뷰를 하며 여러 모델 구조를 이해하는 능력을 많이 키웠다고 생각해요. 제가 연구원으로 활동하며 얻은 것 중 가장 큰 결과랍니다. 항상 많은 정보를 공유해주시는 아트플로우 랩장님과 랩원들께 감사하게 생각하고 있어요! 앞으로도 아트플로우 화이팅입니다~!</p>
