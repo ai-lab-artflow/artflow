@@ -337,8 +337,14 @@ generate된 user state를 input으로  간주한다.</li>
 <li>Output은 Q-value이며  scalar이다.</li>
 <li>Q-value에 따라 actor network의 parameters가 업데이트 되며, 이는 action의 성능을<br>
 향상시킨다.</li>
-<li>Policy  update에  관련한  식은  아래와  같다.</li>
+<li>Policy  update에  관련한  식은  아래와  같다.<br>
+<img src="https://lh3.googleusercontent.com/-Zyi1Y3tI7yPoMT1_2r5862fOxt9jcvgJsKifTHZldcmWE5HN7r8egF0bd3VI8EbOPQbSNZmCkyh=s700" alt="" title="4"><br>
+<img src="https://lh3.googleusercontent.com/v7E-AhDHcg1U8k-YIKNFkh7GARwsU7qYpiunBy-1xf_Y_KB1AgatCgALYEIqvvm9b8aZPhZJpsTa=s700" alt="" title="5"><br>
+첨언하자면, Q는 actor network의 output인 action a와 state를 input으로 사 용하는 critic network에 대한 함수이다. 또한 본 논문에서는 DDPG를 이용했 기 때문에 DDPG의 loss function과  같다.</li>
 </ul>
+<ol start="3">
+<li>State representation: actor network와 critic network에서 중요한 역할을 한다. 이것은 state를 모델링 하는 데에 필수적이며, features간 상호작용을 명확하게 모델링 하면 추천 시스템의 성능을 향상시킬 수  있다.</li>
+</ol>
 <h3>13. 랩원들의 후기를 부탁합니다.</h3>
 <p><img src="https://lh3.googleusercontent.com/1kd62PD4v3zemne3ezoOCYS47e8xULOOK_fyHTxQChCxb7hd2RcWbhDr_Bh2GxOKfVe-4ai4bT6Z=s50" alt="" title="김훈민"><strong>김훈민</strong> :</p>
 <p>처음 딥러닝을 접한 후 혼자서 독학을 시작하고 답답한 마음이 많았어요. 무엇을 어떻게 공부해야 할지 잘 모르는 상태였거든요. 딥러닝 기초 책을 보며 예제 코드를 따라 하고 이해하는 수준이었죠. 그러던 중에 좋은 기회가 있어 ‘한국인공지능연구소’에 참여를 하게 되었고, 많은 새로운 정보들을 얻고 여러 가지 경험을 해볼 기회가 되었다고 생각해요. 특히 여러 논문 리뷰를 하며 여러 모델 구조를 이해하는 능력을 많이 키웠다고 생각해요. 제가 연구원으로 활동하며 얻은 것 중 가장 큰 결과랍니다. 항상 많은 정보를 공유해주시는 아트플로우 랩장님과 랩원들께 감사하게 생각하고 있어요! 앞으로도 아트플로우 화이팅입니다~!</p>
