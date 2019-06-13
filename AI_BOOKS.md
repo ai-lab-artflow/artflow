@@ -242,6 +242,103 @@ RetinaNet
 <img src="https://lh3.googleusercontent.com/8vKQfWR38zvx0cgtE1JyPS2g3Qinzvum2ho5HzhaJeuTZ8Hv8GPhufxYYwQ2JmI5PwyDbwg3RTEh=s700" alt="" title="RETINA GRAPH"></p>
 <p>RetinaNet은 이 Focal Loss와 ResNet에 Feature Pyramid Network를 살짝 변형하여 사용한 네트워크입니다.<br>
 <img src="https://lh3.googleusercontent.com/TlgMv11pBEv5it47SWvm6WFwfWES6AzCTI76qv0QAc3n-pD7P9TK14nvW-lfG1RP1LcQbDVvy1oq=s700" alt="" title="retinanet"></p>
+<p>그리고 추가적으로 강화학습 관련된 논문도 리뷰했습니다.</p>
+<p><img src="https://lh3.googleusercontent.com/gl7bkkPmOIthPt1z_fA9jCx4whqnUwIaI23ItYk1ygz3JAxn7av5soLWa_JU9oLoTKcv4OIiIuMC=s50" alt="" title="민예린"> <strong>민예린</strong> :</p>
+<center>Reinforcement Learning for Recommender System</center>
+<p>0 Introduction</p>
+<p>구글의 YouTube 추천 시스템은 Collaborative filtering, DNN, reinforcement learning 순으로 발전 해왔다. 따라서 본 보고서는 기존에 사용되던 추천 시스템과 이들의 한계를 극복하기 위한 강화 학습 적용에 대해 서술할  것이다.</p>
+<p>
+Section 1: Collaborative  filtering
+</p><p>Section 2: DNN for YouTube  recommendation</p>
+<p>Section 3: Deep reinforcement learning based  recommendation</p>
+<p>Section 4: Deep reinforcement learning  for YouTube recommendation</p>
+<p>Section 5:  Conclusion</p>
+<p>Section 1: Collaborative filtering(이하 CF)</p>
+<p>CF는 ‘유유상종( 類 類 相 從 )’을 가정으로 하여 만들어진 기술로 추천 시스템의 가장 기본적이면서도 핵심이라고 할 수 있다.</p>
+<p>User-based CF: 유사한 성향을 가진 users를 구분하고 그 users들이 좋아하는 것을 이용해 추 천하는  방식</p>
+<p>Item-based CF: 각 user가 이전에 구매했던 item을 이용해 유사한 물건을 추전하는 방식</p>
+<p>위와 같은 방법은 model-based 방법이며 모델을 만드는데 사용되는 대표적인 방법으로는 matrix factorization이 있다.</p>
+<p>Matrix factorization: user와 item을 각 행과 열로 하는 matrix를 만든다. 이는 모든 user가 모 든 item을 소비할 수 없다는 가정하에 matrix의 비어 있는 부분을 채우는  기술이다.</p>
+<p>현재 아마존에서는 CF를 이용해 상품을 추천하고 있으며, large scale issue를 위해 CF와 neural attention mechanism을 결합하여 이용한다.</p>
+<p>Attention mechanism: 모든 context에 같은 가중치를 부여하는 것이 아니라 중요한 것에 집 중해 가중치를 부여하는  메커니즘</p>
+<p>Section 2: DNN for YouTube recommendation
+</p><p>1.1 Challenges with recommendation  system</p>
+<p>Scale:  데이터의  크기가  크기  때문에  기존  알고리즘으로는  작동하기  어렵다.</p>
+<p>Freshness: 새로운 비디오가 실시간으로 올라오며, 이것이 바로 추천에 반영될 수 있어야 한 다.</p>
+<p>Noise: user 만족도를 측정하는 근거가 거의 implicit feedback이다. 예를 들어 관심이 없는<br>
+분야라도  실수로  동영상을  시청할  수  있는  경우가  존재한다.  따라서  feedback에  noise가<br>
+많다.</p><br>
+1.2 System  overview<br>
+<img src="https://lh3.googleusercontent.com/XuKBdv915lJ_bJAkZD4wcQa5axFJyukH_89jnm70aqVls6eZBcfPpYkIJ8UWfTPPXYq5H0Oa8qdM=s700" alt="" title="1.">
+<ul>
+<li>
+<p>Video corpus: user의 YouTube 사용 기록 corpus를 embedding vector로 변환하여<br>
+input으로   사용한다.</p>
+</li>
+<li>
+<p>Candidate  generation:  user에게  추천할  후보  동영상을  몇  백  개  선정한다.</p>
+</li>
+<li>
+<p>효율적인 구현을 위하여 precision, recall, ranking loss 등의 과거 기록은 offline 측정을<br>
+이용한다.</p>
+</li>
+<li>
+<p>Freshness를 위해 동영상의 나이를 input으로  넣어준다.</p>
+</li>
+<li>
+<p>동영상을 굉장히 많이 보는 outliers의 영향을 빼기 위해 user별 영상 감상 횟수를 제한한 다.</p>
+</li>
+<li>
+<p>검색 키워드에 대한 corpus는 순서를 날린 bag-of-tokens를 이용한다.</p>
+<p>(방금 검색한 내용 이 계속 메인 페이지에 뜨는 것을  방지하기 위해)</p>
+</li>
+<li>
+<p>Ranking: 선정된 후보들을 순위 매겨 output으로  추천한다.</p>
+</li>
+</ul>
+<p><img src="https://lh3.googleusercontent.com/qsAsStMM7yZaCqN3GrYkNaF4lcB0bfc13cS6RTU6VCQxJZYziIbYI7zi081d-B-8oKfEo9uOVIv3=s700" alt="" title="2"></p>
+<ul>
+<li>기존 feature뿐만 아니라 추가한 feature를  사용한다.</li>
+<li>대략 수백 개 정도의 feature를  사용한다.</li>
+</ul>
+<p>Section 3: Deep reinforcement learning based recommendation</p>
+<p>1.1 Background</p>
+<p>구글의 강화 학습 적용 사례를 보기에 앞서, 논문 ‘Deep Reinforcement Learning based Recommendation  with  Explicit  User-Item  Interactions  Modeling’을  통해  강화  학습이  추천  시스템에 적용되는 컨셉을 이해해 보고자  한다.</p>
+<p>본 논문에서는 이전의 추천 시스템에서의 두 가지 한계에 대해 얘기하는데, 이는 구글에서 말하는 이전 추천 시스템의 한계와 같다. 이러한 한계들을 극복하기 위해 ‘novel recommendation framework  based  on  deep  reinforcement  learning’  (이하  DRR)의  적용이  필요하다.</p>
+<p>User의  preference가  계속  변하지  않는다고  가정한다.  하지만  user의  preference는  dynamic<br>
+하므로 이 가정에는 문제가 있다.</p>
+<p>직전의 reward를 최대화하는 것에 집중하며, 추천한 items이 click 또는 consume 됐는지 여 부에만 집중한다. 하지만 직전 reward에만 신경 쓰는 것은 long-term contributions를 무시할 가능성이  있다.</p>
+<p>본 논문에서는 ‘actor-critic’ reinforcement learning을 이용할 예정이며, 이는 user와 recommender systems 사이의 상호작용을 모델링하는 것에 활용된다.</p>
+<p>1.2 Preliminaries<br>
+<img src="https://lh3.googleusercontent.com/vX0q-OGXKLzimqOOc57QU0Kp80w-kB1JvLdkQIJdOuy21I7FF6NIahggdxRN7pwK0lZsdV305fZF=s700" alt="enter image description here" title="2"><br>
+-State S: user’s positive interaction history</p>
+<p>with recommender.</p>
+<p>-Actions  A:  continuous  parameter  vector.  (모 든 candidate items의 ranking scores를 결정, Top-N items이  추천됨)</p>
+<p>-Transitions P: state는 user의 긍정적 상호작용 기록의 representation이다.<br>
+그러므로 한번 user의 feedback이 들어오면 state transition 이 determine된다.</p>
+<p>-Reward R: user’s feedback(satisfaction).</p>
+<p>-Discount rate γ : factor measuring the present value of long-term rewards.<br>
+<img src="https://lh3.googleusercontent.com/tDp93c5HyrzK04VetAJsQTXTI5MjWuW_0eMMccGdMmQJWtKc5VgRA9KFbJ4C0E9WBclSaS-3WvJ_=s700" alt="" title="3"><br>
+Actor-critic  기반  DRR은  3가지  필수  요소가  있다.</p>
+<p>1)  Actor  network</p>
+<ul>
+<li>Main  network로  policy  network라고도  한다.</li>
+<li>User state를 input으로  간주한다.</li>
+<li>Embedding한 input은 user에 대한 요약된 representation s로  공급된다.</li>
+<li>2개의 ReLU layers와 하나의 Tanh layer를 이용해 representation s를 actor network의<br>
+output인 action a로 transform 시킨다. (기존 DNN은 3개의 ReLU layers)</li>
+<li>Top  ranked  items이  users에게  추천된다.</li>
+</ul>
+<p>2) Critic  network</p>
+<ul>
+<li>DQN의  network이다.</li>
+<li>User  state  representation  module과  actor  network의  action  a로<br>
+generate된 user state를 input으로  간주한다.</li>
+<li>Output은 Q-value이며  scalar이다.</li>
+<li>Q-value에 따라 actor network의 parameters가 업데이트 되며, 이는 action의 성능을<br>
+향상시킨다.</li>
+<li>Policy  update에  관련한  식은  아래와  같다.</li>
+</ul>
 <h3>13. 랩원들의 후기를 부탁합니다.</h3>
 <p><img src="https://lh3.googleusercontent.com/1kd62PD4v3zemne3ezoOCYS47e8xULOOK_fyHTxQChCxb7hd2RcWbhDr_Bh2GxOKfVe-4ai4bT6Z=s50" alt="" title="김훈민"><strong>김훈민</strong> :</p>
 <p>처음 딥러닝을 접한 후 혼자서 독학을 시작하고 답답한 마음이 많았어요. 무엇을 어떻게 공부해야 할지 잘 모르는 상태였거든요. 딥러닝 기초 책을 보며 예제 코드를 따라 하고 이해하는 수준이었죠. 그러던 중에 좋은 기회가 있어 ‘한국인공지능연구소’에 참여를 하게 되었고, 많은 새로운 정보들을 얻고 여러 가지 경험을 해볼 기회가 되었다고 생각해요. 특히 여러 논문 리뷰를 하며 여러 모델 구조를 이해하는 능력을 많이 키웠다고 생각해요. 제가 연구원으로 활동하며 얻은 것 중 가장 큰 결과랍니다. 항상 많은 정보를 공유해주시는 아트플로우 랩장님과 랩원들께 감사하게 생각하고 있어요! 앞으로도 아트플로우 화이팅입니다~!</p>
