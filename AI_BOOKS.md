@@ -369,6 +369,81 @@ representation을 만든다.</li>
 <li>모든 에피소드가  끝나면<br>
 policy와 weight return.</li>
 </ul>
+<p>Section 4: Deep reinforcement learning for YouTube recommendation<br>
+4.1 Preliminaries</p>
+<ul>
+<li>Agent: Candidate generator (use data source to build  agent)</li>
+<li>State: user interest,  context</li>
+<li>Reward: user satisfaction</li>
+<li>Action: nominate from a catalog of millions of  videos</li>
+</ul>
+<p>4.2 Challenges of the RL based recommendation system and what google does for  these</p>
+<ol>
+<li>Large action  space</li>
+</ol>
+<ul>
+<li>Action  space가  너무  크면  long-term  reward를  최대화하기  어렵다.</li>
+<li>따라서 policy-based RL을  이용한다.</li>
+<li>이는 value-based와 비교했을 때 더  안정적이다.</li>
+</ul>
+<p><img src="https://lh3.googleusercontent.com/4uTSWr4Mg177RhV-9Po4gC8HtuktodEmrAEqu6WzkWufBSNBkkvwmpcjQL7MYC3aTY7t9AEf7zM4=s700" alt="" title="6"><br>
+where T is a temperature that is normally set to 1.</p>
+<ol start="2">
+<li>
+<p>Expensive  exploration</p>
+</li>
+<li>
+<p>Learning  off-policy</p>
+</li>
+</ol>
+<ul>
+<li>Agent가 5시간마다  refresh된다.</li>
+<li>이것은 5시간 뒤의 policy와 지금의 policy가 매우 다르다는 것을  의미한다.</li>
+<li>따라서 off-policy를 이용한다. (Otherwise, traffic  발생한다.)<br>
+<img src="https://lh3.googleusercontent.com/oqBHcBVRLtx4X3mWJ_80ZfaeLyEwjtCSPEOry6yQgYG7jk8e9fkTAaWgXkcKmPviJPUHVSF75R3N=s700" alt="" title="7"></li>
+<li>Trajectory  𝜏  =  (𝑠0,  𝐴0,  𝑠1,  …  )</li>
+<li>𝛽는  behavior  policy이다.  전체  corpus에서  action  빈도를  집계하여  user<br>
+state와  독립적으 로 추정된 𝛽를 구할  수 있다.</li>
+</ul>
+<ol start="4">
+<li>Partial  observability</li>
+</ol>
+<ul>
+<li>User들은  그들의  interest와  추천  내용에  대한  직접적  feedback을  말하지  않는다.</li>
+<li>따라서  partial  observability라는  challenge가  발생하게  되는데,  이때  RNN을<br>
+이용한다.<br>
+<img src="https://lh3.googleusercontent.com/QtI3t4cDalnQG0PZhaW2h97s5irl4D_KayRrKy3OR3GaFpENFhK6MW1WmeD75BmXJPhlbdOHp6Rm=s700" alt="" title="8"></li>
+<li>아래는 RNN안에서 state가 update되는  형태이다.<br>
+<img src="https://lh3.googleusercontent.com/bK83Gt2RZpKnzVZkhQqaGcaFS7SQ-rBwrFRcWOvVf67nPP9A02h3Ejd5Ges9BMHLEm-neRNEJUPp=s700" alt="" title="9"><br>
+where 𝑧𝑡 , 𝑖𝑡 ∈ ℝ𝑛  is another embedding for each action a in the action space.</li>
+<li>User가 추천을 받기 전에 보았던 동영상들을 RNN에  넣고 최종 state를 결정한다.</li>
+<li>또한 동영상 기록 이외에도 device type과 같은 것들이 user의 interest에 영향을 준다. 따 라서 추가로 features를  넣어준다.<br>
+<img src="https://lh3.googleusercontent.com/gHRYvQdNtvJr7KbGBUYBRm3_wNz7Q-f67wk3cBJ_obAzktnOwiTK_gqKTYBcEus5vFznyvRzShW1=s700" alt="" title="10"></li>
+</ul>
+<ol start="5">
+<li>Noisy  reward</li>
+</ol>
+<ul>
+<li>User  feedback의  noise를  다루기  위해서는  future  reward를  discount하여  모아야<br>
+한다.<br>
+<img src="https://lh3.googleusercontent.com/_0QCBbxZ94l7uDYRWFNYyOG-EjFxVc5rSkjb91arBBc4LIlgaT3YG_itFrLqqQ9edLk0dj-TEXQQ=s700" alt="" title="11"></li>
+<li>Discounted future reward의 컨셉은 강화 학습에서의 discounted factor와  비슷하다.</li>
+</ul>
+<p>Section 5:  Conclusion</p>
+<ul>
+<li>강화  학습은  actions의  complex  sequence를  state로  바꾸고  long-term<br>
+reward를  최대화하는 것에  이용된다.</li>
+<li>Embedding에 BERT를 적용한 사례도 확인해 보았는데, embedding 부분에 어느 방법을 적용 할지 고민할 필요가 있다.</li>
+<li>구글도  cold  start  issue에  대해서  고민  중이다.</li>
+<li>Cold start issue: 기존에 없던 새로운 user가 등장했을 때, 추천할 정보가  부족하다.</li>
+<li>구글의 future work는  이러하다.
+<ul>
+<li>Better state representation through LRD</li>
+<li>Better exploration and  planning</li>
+<li>Beyond systems and users: improve YouTube  ecosystem.</li>
+</ul>
+</li>
+</ul>
 <h3>13. 랩원들의 후기를 부탁합니다.</h3>
 <p><img src="https://lh3.googleusercontent.com/1kd62PD4v3zemne3ezoOCYS47e8xULOOK_fyHTxQChCxb7hd2RcWbhDr_Bh2GxOKfVe-4ai4bT6Z=s50" alt="" title="김훈민"><strong>김훈민</strong> :</p>
 <p>처음 딥러닝을 접한 후 혼자서 독학을 시작하고 답답한 마음이 많았어요. 무엇을 어떻게 공부해야 할지 잘 모르는 상태였거든요. 딥러닝 기초 책을 보며 예제 코드를 따라 하고 이해하는 수준이었죠. 그러던 중에 좋은 기회가 있어 ‘한국인공지능연구소’에 참여를 하게 되었고, 많은 새로운 정보들을 얻고 여러 가지 경험을 해볼 기회가 되었다고 생각해요. 특히 여러 논문 리뷰를 하며 여러 모델 구조를 이해하는 능력을 많이 키웠다고 생각해요. 제가 연구원으로 활동하며 얻은 것 중 가장 큰 결과랍니다. 항상 많은 정보를 공유해주시는 아트플로우 랩장님과 랩원들께 감사하게 생각하고 있어요! 앞으로도 아트플로우 화이팅입니다~!</p>
