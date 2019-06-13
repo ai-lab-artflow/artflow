@@ -241,8 +241,7 @@ RetinaNet
 </p><p>Retina Net은 일단계 (one stage)의 정확도가 떨어지는 것이 “Forground와 Background Class의 불균형”으로 생각했습니다. 즉, 배경과 같이 쉽게 탐지가 가능한 것은 가중치를 낮추고 객체와 같이 배경에 비해 탐지가 어려운 것은 가중치를 높인 Focal Loss라는 손실함수를 사용합니다. SSD에서도 이런 문제를 해결하기 위해 Hard Negative Mining이라는 방법을 사용하였고 YOLO계열에서는 Confidence Score 라는 것을 사용했지만 Focal Loss가 상대적으로 사용하기가 쉽습니다.<br>
 <img src="https://lh3.googleusercontent.com/8vKQfWR38zvx0cgtE1JyPS2g3Qinzvum2ho5HzhaJeuTZ8Hv8GPhufxYYwQ2JmI5PwyDbwg3RTEh=s700" alt="" title="RETINA GRAPH"></p>
 <p>RetinaNet은 이 Focal Loss와 ResNet에 Feature Pyramid Network를 살짝 변형하여 사용한 네트워크입니다.<br>
-<img src="https://lh3.googleusercontent.com/TlgMv11pBEv5it47SWvm6WFwfWES6AzCTI76qv0QAc3n-pD7P9TK14nvW-lfG1RP1LcQbDVvy1oq=s700" alt="" title="retinanet"><br>
-&lt;![if !vml]&gt;![그림 입니다.</p>
+<img src="https://lh3.googleusercontent.com/TlgMv11pBEv5it47SWvm6WFwfWES6AzCTI76qv0QAc3n-pD7P9TK14nvW-lfG1RP1LcQbDVvy1oq=s700" alt="" title="retinanet"></p>
 <h3>13. 랩원들의 후기를 부탁합니다.</h3>
 <p><img src="https://lh3.googleusercontent.com/1kd62PD4v3zemne3ezoOCYS47e8xULOOK_fyHTxQChCxb7hd2RcWbhDr_Bh2GxOKfVe-4ai4bT6Z=s50" alt="" title="김훈민"><strong>김훈민</strong> :</p>
 <p>처음 딥러닝을 접한 후 혼자서 독학을 시작하고 답답한 마음이 많았어요. 무엇을 어떻게 공부해야 할지 잘 모르는 상태였거든요. 딥러닝 기초 책을 보며 예제 코드를 따라 하고 이해하는 수준이었죠. 그러던 중에 좋은 기회가 있어 ‘한국인공지능연구소’에 참여를 하게 되었고, 많은 새로운 정보들을 얻고 여러 가지 경험을 해볼 기회가 되었다고 생각해요. 특히 여러 논문 리뷰를 하며 여러 모델 구조를 이해하는 능력을 많이 키웠다고 생각해요. 제가 연구원으로 활동하며 얻은 것 중 가장 큰 결과랍니다. 항상 많은 정보를 공유해주시는 아트플로우 랩장님과 랩원들께 감사하게 생각하고 있어요! 앞으로도 아트플로우 화이팅입니다~!</p>
