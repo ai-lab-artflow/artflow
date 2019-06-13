@@ -62,6 +62,10 @@
 <h3>8. 랩 모임을 하면서 에피소드가 있었다면?</h3>
 <p><img src="https://lh3.googleusercontent.com/1kd62PD4v3zemne3ezoOCYS47e8xULOOK_fyHTxQChCxb7hd2RcWbhDr_Bh2GxOKfVe-4ai4bT6Z=s50" alt="" title="김훈민"><strong>김훈민 </strong> :</p>
 <p>랩 모임을 하면서 가장 기억에 남는 에피소드라면 4기 마지막 랩 모임을 마칠 때 회식을 했었거든요 좋은 분들과 좋은 연구주제로 모인 팀인 만큼 마음이 잘 맞고 이야기도 잘 통해 회식을 하다 보니 평소보다 과음을 하게 되었어요… 다음날 조금 힘들었지만 재미있었던 기억으로 남은 회식이었답니다. 다음 회식도 기대되네요.</p>
+<p><img src="https://lh3.googleusercontent.com/gl7bkkPmOIthPt1z_fA9jCx4whqnUwIaI23ItYk1ygz3JAxn7av5soLWa_JU9oLoTKcv4OIiIuMC=s50" alt="" title="민예린"></p>
+<p>
+4기 때 주가 예측을 하던 랩이다 보니 랩장님이 catboost로 주요 기업 주가의 상승 하락 예측을 매일 하셨는데, 가끔 모임을 할 때면 데일리 예측과 실제 변동을 보여주시면서 아쉬워하시는 모습이 아무래도 가장 기억에 남는 에피소드입니다 헤헤.
+</p>
 <p><img src="https://lh3.googleusercontent.com/JCElC-S7Oh8ERUkNxE99JqpL7bP7_naNibkPHEaSnIMhUCbIwrlM_YToiWoDfb5YKPOykktOJ1-r=s50" alt="" title="박성은"><strong>박성은</strong> :</p>
 <p>2기수(약 6개월) 동안에 2주에 한번씩 만나면서 정.말.(궁서체) 스터디만 했습니다.
 </p><p>얼굴만 알고 인사만 하는 정도였는데 마지막 기수날에 다함께 저녁을 먹으며 술 한잔을 걸치자며 누군가가(사실은 제가) 제안했죠.</p>
