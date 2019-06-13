@@ -10,14 +10,14 @@
  <p></p><h3>2. 랩 이름을 왜 이렇게 지었나요?</h3>
  art라는 것은 우리나라에서는 예술이란 의미로 많이 쓰이지만 프랑스는 기술, 독일은 종류라는 의미로 많이 쓰여요. 그래서 우리는 art라는 예술과 AI의 흐름, AI를 위한 다양한 소프트웨어(종류)라는 의미와 flow라는 ‘흐르다’라는 의미가 합쳐져 ‘Artflow’가 탄생되었어요.<p></p>
 <h3>3. 랩원들을 소개해주세요.</h3>
-<p><img src="https://lh3.googleusercontent.com/vndxluTkxbMebUV08DUGXcnut2VlSt_6IEyWb2L7K3KqRdhUWZBBbzOcBXz7bX9-MmAFIv2nGN4K=s50" alt="" title="김현우"></p>
+<p><img src="https://lh3.googleusercontent.com/vndxluTkxbMebUV08DUGXcnut2VlSt_6IEyWb2L7K3KqRdhUWZBBbzOcBXz7bX9-MmAFIv2nGN4K=s50" alt="" title="김현우"> <strong>김현우</strong> :</p>
 <p>
 2016년 3번의 도전 끝에 한양대학교 정보시스템학과에 입학한 3월, 세상은 이세돌과 알파고의 바둑 대결로 들썩이고 있었습니다. 많은 전문가가 이세돌의 승리를 점쳤지만, 구글 딥러닝 전문가들이 개발한 바둑 AI 알파고는 손쉽게 이세돌을 이겼고, 사람들은 4차 산업혁명 시대가 도래했음을 몸소 느낄 수 있었습니다. AI는 이제 영화에서 보던 뜬구름 잡는 이야기가 아닌 실생활에 깊숙하게 다가왔고, 네이버를 포함한 많은 기업이 AI 산업에 박차를 가하고 있습니다.
 </p><p>제가 가장 관심 있는 분야는 인공지능 기반의 사물인터넷입니다. 모든 사물의 연결은 스마트 가전과 홈을 넘어 자동차와 도시 인프라까지 퍼지고 있습니다. 구체적으로 모바일 디바이스, 집, 다른 차량, 도로 인프라 등 자동차 주변의 사물들과 연결하는 커넥티드 카(Connected car)를 궁극적으로 실현하고 싶습니다.</p>
 <p>제가 다니는 정보시스템학과의 커리큘럼은 매우 훌륭하지만, 인공지능 기반의 전문가로 성장하기에는 부족한 면이 많습니다. 자동차 임베디드 개발자가 되기 위해 머신러닝, 딥러닝에 대한 전반적인 지식을 쌓고 뜻이 많는 개발자들과 같이 협업하고자 ‘한국인공지능연구소’의 ‘아트플로우 랩실’에 참가하게 되었습니다.</p>
 <p><img src="https://lh3.googleusercontent.com/ygIgFegvocrtsJliiT7DX_XdbKIv6RnYeX72ADQGJska2iWluf97v_jTKS6YeXWPojkSASKj5yf2=s50" alt="" title="김훈민"><strong>김훈민</strong> :</p>
 <p>안녕하세요 ’한국인공지능연구소’ 4기 연구원으로 활동한 김훈민입니다. 원래 제 직업은 PLC 소프트웨어 엔지니어였어요. 그런데 직장 생활 중 비전 시스템에 딥러닝을 적용한 것을 보고 관심이 생겨 공부를 시작하게 됐습니다. 소프트웨어로 뉴런 구조를 프로그램해서 학습이 가능하다는 게 처음엔 아주 신기했거든요. 연구원 활동을 시작할 때만 해도 직장 생활을 하고 있었는데 공부를 하다 보니 재미를 느껴 인공지능 분야로 이직을 생각하게 되어 일을 그만두고 공부를 하며 이직 준비를 하고 있어요. 처음 ‘한국인공지능연구소‘를 알게 된 건 우연히 중국 출장 중 같이 일하던 협력업체 분께서 딥러닝에 관심이 있어 인공지능 분야에 대해 이야기를 나누다가 한국 복귀할 때 추천을 해줘서 참여하게 되었어요. 연구소 활동을 시작할 때는 실력이 부족하다 느껴 참여에 부담감을 가지고 있었는데, 처음 관심을 가졌던 분야가 이미지 처리이고 마침 아트플로우 랩장님께서 환영하며 받아주셔서 즐겁게 활동을 하고 있습니다!</p>
-<p><img src="https://lh3.googleusercontent.com/gl7bkkPmOIthPt1z_fA9jCx4whqnUwIaI23ItYk1ygz3JAxn7av5soLWa_JU9oLoTKcv4OIiIuMC=s50" alt="" title="민예린"></p>
+<p><img src="https://lh3.googleusercontent.com/gl7bkkPmOIthPt1z_fA9jCx4whqnUwIaI23ItYk1ygz3JAxn7av5soLWa_JU9oLoTKcv4OIiIuMC=s50" alt="" title="민예린"> <strong>민예린</strong> :</p>
 <p>
 5기에 아트플로우 랩에 들어오게 된 민예린입니다. 전공은 수학·금융이고, 주 관심 분야는 강화학습과 자연어입니다 :)
 </p><p>한국인공지능 연구소에 들어오기 전에는 RNN 공부를 잠깐 했었고, 4기 땐 ‘주가 예측’을 하는 알파 프로젝트 랩에서 RNN으로 주가 예측을 공부를 하다 기수가 끝나갈 즈음에 강화학습을 접하게 되어 흥미를 가지게 되었습니다. 그러다 이전 랩이 사라지고, 데모데이 때 아트플로우에서 강화학습을 공부한다는 발표를 듣고 참여를 결심하게 됐습니다. 무엇보다 랩원분들이 무척 좋아 보여서 재미있는 활동이 될 것 같습니다 :)</p>
@@ -62,7 +62,7 @@
 <h3>8. 랩 모임을 하면서 에피소드가 있었다면?</h3>
 <p><img src="https://lh3.googleusercontent.com/1kd62PD4v3zemne3ezoOCYS47e8xULOOK_fyHTxQChCxb7hd2RcWbhDr_Bh2GxOKfVe-4ai4bT6Z=s50" alt="" title="김훈민"><strong>김훈민 </strong> :</p>
 <p>랩 모임을 하면서 가장 기억에 남는 에피소드라면 4기 마지막 랩 모임을 마칠 때 회식을 했었거든요 좋은 분들과 좋은 연구주제로 모인 팀인 만큼 마음이 잘 맞고 이야기도 잘 통해 회식을 하다 보니 평소보다 과음을 하게 되었어요… 다음날 조금 힘들었지만 재미있었던 기억으로 남은 회식이었답니다. 다음 회식도 기대되네요.</p>
-<p><img src="https://lh3.googleusercontent.com/gl7bkkPmOIthPt1z_fA9jCx4whqnUwIaI23ItYk1ygz3JAxn7av5soLWa_JU9oLoTKcv4OIiIuMC=s50" alt="" title="민예린"></p>
+<p><img src="https://lh3.googleusercontent.com/gl7bkkPmOIthPt1z_fA9jCx4whqnUwIaI23ItYk1ygz3JAxn7av5soLWa_JU9oLoTKcv4OIiIuMC=s50" alt="" title="민예린"> <strong>민예린</strong> :</p>
 <p>
 4기 때 주가 예측을 하던 랩이다 보니 랩장님이 catboost로 주요 기업 주가의 상승 하락 예측을 매일 하셨는데, 가끔 모임을 할 때면 데일리 예측과 실제 변동을 보여주시면서 아쉬워하시는 모습이 아무래도 가장 기억에 남는 에피소드입니다 헤헤.
 </p>
