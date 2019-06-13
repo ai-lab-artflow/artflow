@@ -262,13 +262,13 @@ Section 1: Collaborative  filtering
 <p>현재 아마존에서는 CF를 이용해 상품을 추천하고 있으며, large scale issue를 위해 CF와 neural attention mechanism을 결합하여 이용한다.</p>
 <p>Attention mechanism: 모든 context에 같은 가중치를 부여하는 것이 아니라 중요한 것에 집 중해 가중치를 부여하는  메커니즘</p>
 <p>Section 2: DNN for YouTube recommendation
-</p><p>1.1 Challenges with recommendation  system</p>
+</p><p>2.1 Challenges with recommendation  system</p>
 <p>Scale:  데이터의  크기가  크기  때문에  기존  알고리즘으로는  작동하기  어렵다.</p>
 <p>Freshness: 새로운 비디오가 실시간으로 올라오며, 이것이 바로 추천에 반영될 수 있어야 한 다.</p>
 <p>Noise: user 만족도를 측정하는 근거가 거의 implicit feedback이다. 예를 들어 관심이 없는<br>
 분야라도  실수로  동영상을  시청할  수  있는  경우가  존재한다.  따라서  feedback에  noise가<br>
 많다.</p><br>
-1.2 System  overview<br>
+2.2 System  overview<br>
 <img src="https://lh3.googleusercontent.com/XuKBdv915lJ_bJAkZD4wcQa5axFJyukH_89jnm70aqVls6eZBcfPpYkIJ8UWfTPPXYq5H0Oa8qdM=s700" alt="" title="1.">
 <ul>
 <li>
@@ -302,14 +302,14 @@ input으로   사용한다.</p>
 <li>대략 수백 개 정도의 feature를  사용한다.</li>
 </ul>
 <p>Section 3: Deep reinforcement learning based recommendation</p>
-<p>1.1 Background</p>
+<p>3.1 Background</p>
 <p>구글의 강화 학습 적용 사례를 보기에 앞서, 논문 ‘Deep Reinforcement Learning based Recommendation  with  Explicit  User-Item  Interactions  Modeling’을  통해  강화  학습이  추천  시스템에 적용되는 컨셉을 이해해 보고자  한다.</p>
 <p>본 논문에서는 이전의 추천 시스템에서의 두 가지 한계에 대해 얘기하는데, 이는 구글에서 말하는 이전 추천 시스템의 한계와 같다. 이러한 한계들을 극복하기 위해 ‘novel recommendation framework  based  on  deep  reinforcement  learning’  (이하  DRR)의  적용이  필요하다.</p>
 <p>User의  preference가  계속  변하지  않는다고  가정한다.  하지만  user의  preference는  dynamic<br>
 하므로 이 가정에는 문제가 있다.</p>
 <p>직전의 reward를 최대화하는 것에 집중하며, 추천한 items이 click 또는 consume 됐는지 여 부에만 집중한다. 하지만 직전 reward에만 신경 쓰는 것은 long-term contributions를 무시할 가능성이  있다.</p>
 <p>본 논문에서는 ‘actor-critic’ reinforcement learning을 이용할 예정이며, 이는 user와 recommender systems 사이의 상호작용을 모델링하는 것에 활용된다.</p>
-<p>1.2 Preliminaries<br>
+<p>3.2 Preliminaries<br>
 <img src="https://lh3.googleusercontent.com/vX0q-OGXKLzimqOOc57QU0Kp80w-kB1JvLdkQIJdOuy21I7FF6NIahggdxRN7pwK0lZsdV305fZF=s700" alt="enter image description here" title="2"><br>
 -State S: user’s positive interaction history</p>
 <p>with recommender.</p>
@@ -345,6 +345,30 @@ generate된 user state를 input으로  간주한다.</li>
 <ol start="3">
 <li>State representation: actor network와 critic network에서 중요한 역할을 한다. 이것은 state를 모델링 하는 데에 필수적이며, features간 상호작용을 명확하게 모델링 하면 추천 시스템의 성능을 향상시킬 수  있다.</li>
 </ol>
+<p>3.4 DRR-ave<br>
+state를 모델링하는 structure로 평균을 이용한다.<br>
+<img src="https://lh3.googleusercontent.com/S1qV7bXyWjjU0uDMBdht_bGRNL0zXidzjly_Bq5WiMhj_IJGL6JwAxzxzMex6-VvHbwv_R4OeN9l=s700" alt="" title="5"></p>
+<ol>
+<li>H를 weighted average pooling layer에 의해  변형시킨다.</li>
+<li>변형시킨  vector는  input  user와  상호작용을  모델링  하는  것에  사용된다.</li>
+<li>User의 embedding과 items의 average pooling layer를 합쳐 state<br>
+representation을 만든다.</li>
+</ol>
+<p>H:  n개의  item들로  이루어진  집합  {𝑖1,  𝑖2,  …  ,  𝑖𝑛}</p>
+<p>3.5 Algorithm<br>
+<img src="https://lh3.googleusercontent.com/4dmAfM15Lxb073DfDzEA2-YY5piBilQkWhxTIWBhZ1M5lrKUnwe9Z1R1LI_mMj9Rg3_10O2mE4ui=s700" alt="" title="6"></p>
+<ul>
+<li>한 에피소드(session) 당 들 어있는 time만큼 학습</li>
+<li>H에 대한 state를  관찰하고</li>
+<li>action의 policy 찾음</li>
+<li>Item을 추천하고 user의 feedback으로 reward  계산</li>
+<li>다음 time state에 영향을 준다.</li>
+<li>Critic policy와 actor  policy를 구한다.<br>
+(main policy는 actor policy)</li>
+<li>Policy  update</li>
+<li>모든 에피소드가  끝나면<br>
+policy와 weight return.</li>
+</ul>
 <h3>13. 랩원들의 후기를 부탁합니다.</h3>
 <p><img src="https://lh3.googleusercontent.com/1kd62PD4v3zemne3ezoOCYS47e8xULOOK_fyHTxQChCxb7hd2RcWbhDr_Bh2GxOKfVe-4ai4bT6Z=s50" alt="" title="김훈민"><strong>김훈민</strong> :</p>
 <p>처음 딥러닝을 접한 후 혼자서 독학을 시작하고 답답한 마음이 많았어요. 무엇을 어떻게 공부해야 할지 잘 모르는 상태였거든요. 딥러닝 기초 책을 보며 예제 코드를 따라 하고 이해하는 수준이었죠. 그러던 중에 좋은 기회가 있어 ‘한국인공지능연구소’에 참여를 하게 되었고, 많은 새로운 정보들을 얻고 여러 가지 경험을 해볼 기회가 되었다고 생각해요. 특히 여러 논문 리뷰를 하며 여러 모델 구조를 이해하는 능력을 많이 키웠다고 생각해요. 제가 연구원으로 활동하며 얻은 것 중 가장 큰 결과랍니다. 항상 많은 정보를 공유해주시는 아트플로우 랩장님과 랩원들께 감사하게 생각하고 있어요! 앞으로도 아트플로우 화이팅입니다~!</p>
